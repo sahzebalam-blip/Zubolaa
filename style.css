@@ -1,4 +1,7 @@
 :root{
+  --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI Variable", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+:root{
   --bg:#070707;
   --bg2:#0a0a0a;
   --panel:rgba(255,255,255,.06);
@@ -357,3 +360,4 @@ img{max-width:100%; display:block}
   .grid2{ grid-template-columns: 1fr; }
   .brand{ min-width: unset; }
 }
+

@@ -73,27 +73,32 @@
 
       <div>
         <div class="card glow">
-          <div class="card-title">Live Market Strip (Demo)</div>
-          <div class="ticker" id="ticker">
-            <div class="ticker-track" id="tickerTrack">
-              <span>EUR/USD 1.0842 ▲</span>
-              <span>XAU/USD 2036.10 ▼</span>
-              <span>US100 17842 ▲</span>
-              <span>GBP/USD 1.2681 ▲</span>
-              <span>WTI 78.22 ▼</span>
-              <span>BTC 67,120 ▲</span>
-              <span>ETH 3,420 ▼</span>
-              <span>EUR/USD 1.0842 ▲</span>
-              <span>XAU/USD 2036.10 ▼</span>
-              <span>US100 17842 ▲</span>
-              <span>GBP/USD 1.2681 ▲</span>
-              <span>WTI 78.22 ▼</span>
-              <span>BTC 67,120 ▲</span>
-              <span>ETH 3,420 ▼</span>
-            </div>
-          </div>
-          <p class="mini">Replace demo prices later with TradingView widgets / market data APIs.</p>
-        </div>
+  <div class="card-title">Live Market Strip</div>
+
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {
+      "symbols": [
+        {"proName":"FX_IDC:EURUSD","title":"EUR/USD"},
+        {"proName":"FX_IDC:GBPUSD","title":"GBP/USD"},
+        {"proName":"OANDA:XAUUSD","title":"Gold"},
+        {"proName":"TVC:USOIL","title":"WTI"},
+        {"proName":"NASDAQ:NDX","title":"US100"},
+        {"proName":"BINANCE:BTCUSDT","title":"BTC"},
+        {"proName":"BINANCE:ETHUSDT","title":"ETH"}
+      ],
+      "showSymbolLogo": true,
+      "isTransparent": true,
+      "displayMode": "adaptive",
+      "colorTheme": "dark",
+      "locale": "en"
+    }
+    </script>
+  </div>
+
+  <p class="mini">Data via TradingView official widget (education display).</p>
+</div>
 
         <div class="card" style="margin-top:12px;">
           <div class="card-title">Core Promise</div>
@@ -146,5 +151,6 @@
 </body>
 
 </html>
+
 
 

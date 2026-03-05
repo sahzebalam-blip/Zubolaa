@@ -1,8 +1,6 @@
 /* ==========================================================
-   ZUBOLAA — GRID COSMIC / GOLD + PURPLE (Reference Style)
-   ✅ System fonts only
-   ✅ Grid background + glow orbs + glass cards
-   ✅ Premium spacing & alignment (Apple-like)
+   ZUBOLAA — GRID COSMIC / GOLD + PURPLE (FINAL)
+   System fonts only • Premium spacing • 3D orbit • glass UI
    ========================================================== */
 
 :root{
@@ -49,7 +47,12 @@ body{
   text-rendering: geometricPrecision;
 }
 
-/* ================= GRID BACKGROUND (REFERENCE LOOK) ================= */
+a{color:inherit; text-decoration:none}
+p{margin:0}
+h1,h2,h3{margin:0}
+img{max-width:100%; display:block}
+
+/* ================= GRID BACKGROUND ================= */
 body::before{
   content:"";
   position:fixed; inset:0;
@@ -80,12 +83,7 @@ body::before{
   to{ transform: translate3d(1.6%, 1%, 0) scale(1.06); }
 }
 
-/* ================= BASICS ================= */
-a{color:inherit; text-decoration:none}
-p{margin:0}
-h1,h2,h3{margin:0}
-img{max-width:100%; display:block}
-
+/* ================= LAYOUT ================= */
 .wrap{
   max-width: var(--max);
   margin:0 auto;
@@ -125,8 +123,8 @@ img{max-width:100%; display:block}
 }
 .brand-text .name{
   font-weight: 950;
-  letter-spacing: .06em;
-  font-size: 15px;
+  letter-spacing: .10em;
+  font-size: 14px;
 }
 .brand-text .tag{
   margin-top:2px;
@@ -168,7 +166,7 @@ img{max-width:100%; display:block}
 }
 .cta:hover{ transform: translateY(-1px); }
 
-/* ================= HERO (REFERENCE CENTER FEEL) ================= */
+/* ================= HERO (CENTER) ================= */
 .hero{
   min-height: 64vh;
   display:grid;
@@ -214,7 +212,6 @@ img{max-width:100%; display:block}
   flex-wrap:wrap;
   margin-top: 12px;
 }
-
 .btn{
   padding: 14px 18px;
   border-radius: 14px;
@@ -244,11 +241,22 @@ img{max-width:100%; display:block}
   0%,100%{ transform: translateX(-35%); opacity:.25; }
   50%{ transform: translateX(35%); opacity:.78; }
 }
-.btn.ghost{
-  background: rgba(255,255,255,.03);
+.btn.ghost{ background: rgba(255,255,255,.03); }
+
+/* ================= SECTIONS / CARDS ================= */
+.section{ padding-top: 56px; }
+.section h2{
+  font-size: 34px;
+  font-weight: 950;
+  letter-spacing: -0.02em;
+}
+.section-sub{
+  margin-top: 10px;
+  color: var(--muted);
+  max-width: 90ch;
+  line-height: 1.8;
 }
 
-/* ================= GLASS CARDS ================= */
 .card, .box{
   border-radius: var(--r2);
   background: rgba(12,14,28,.55);
@@ -258,8 +266,6 @@ img{max-width:100%; display:block}
   overflow:hidden;
 }
 .card{ padding: 18px; }
-.box{ padding: 18px; transition:.18s ease; }
-.box:hover{ transform: translateY(-2px); border-color: rgba(212,175,55,.20); }
 
 .card::before, .box::before{
   content:"";
@@ -285,19 +291,6 @@ img{max-width:100%; display:block}
   margin-bottom: 10px;
 }
 
-.section{ padding-top: 56px; }
-.section h2{
-  font-size: 34px;
-  font-weight: 950;
-  letter-spacing: -0.02em;
-}
-.section-sub{
-  margin-top: 10px;
-  color: var(--muted);
-  max-width: 90ch;
-  line-height: 1.8;
-}
-
 /* Grids */
 .grid3{
   margin-top: 18px;
@@ -312,7 +305,12 @@ img{max-width:100%; display:block}
   gap: 16px;
 }
 
-/* Typography inside boxes */
+.box{
+  padding: 18px;
+  transition:.18s ease;
+}
+.box:hover{ transform: translateY(-2px); border-color: rgba(212,175,55,.20); }
+
 .box h3{
   font-size: 16px;
   font-weight: 950;
@@ -329,8 +327,8 @@ img{max-width:100%; display:block}
 .mini{ margin-top: 10px; font-size: 12px; color: var(--muted2); }
 
 /* Chips */
-.chips{display:flex; gap:8px; flex-wrap:wrap; margin-top: 12px;}
-.chips span{
+.chips{display:flex; gap:8px; flex-wrap:wrap; margin-top: 12px; justify-content:center;}
+.chips a, .chips span{
   font-size: 12px;
   padding: 7px 10px;
   border-radius: 999px;
@@ -358,8 +356,134 @@ img{max-width:100%; display:block}
   flex-wrap:wrap;
 }
 
-/* Responsive */
+/* ================= 3D / ORBIT VISUAL ================= */
+.orbit-wrap{
+  position: relative;
+  width: min(760px, 92vw);
+  height: 340px;
+  margin-top: 18px;
+  display:grid;
+  place-items:center;
+}
+
+.orbit{
+  position:absolute;
+  inset: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: radial-gradient(closest-side, rgba(255,255,255,.04), transparent 70%);
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 22px 70px rgba(0,0,0,.45));
+}
+.orbit-a{
+  transform: perspective(900px) rotateX(64deg) rotateZ(18deg);
+  opacity:.55;
+}
+.orbit-b{
+  inset: 40px 70px;
+  transform: perspective(900px) rotateX(64deg) rotateZ(-12deg);
+  opacity:.40;
+}
+.orbit-dot{
+  position:absolute;
+  width: 10px; height: 10px;
+  border-radius: 999px;
+  background: rgba(212,175,55,.95);
+  box-shadow: 0 0 18px rgba(212,175,55,.35);
+}
+.dot1{ animation: orbit1 6s linear infinite; }
+.dot2{ animation: orbit2 7.4s linear infinite; background: rgba(124,58,237,.95); box-shadow:0 0 18px rgba(124,58,237,.35); }
+.dot3{ animation: orbit3 8.6s linear infinite; background: rgba(0,255,200,.75); box-shadow:0 0 18px rgba(0,255,200,.25); }
+
+@keyframes orbit1{ from{ transform: translate(0,0) rotate(0deg) translateX(280px);} to{ transform: translate(0,0) rotate(360deg) translateX(280px);} }
+@keyframes orbit2{ from{ transform: translate(0,0) rotate(0deg) translateX(220px);} to{ transform: translate(0,0) rotate(360deg) translateX(220px);} }
+@keyframes orbit3{ from{ transform: translate(0,0) rotate(0deg) translateX(160px);} to{ transform: translate(0,0) rotate(360deg) translateX(160px);} }
+
+.holo-card{
+  width: min(520px, 92%);
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.11);
+  background: rgba(12,14,28,.55);
+  box-shadow: 0 26px 90px rgba(0,0,0,.55);
+  padding: 16px;
+  position: relative;
+  overflow:hidden;
+}
+.holo-card::before{
+  content:"";
+  position:absolute; inset:-60%;
+  background:
+    radial-gradient(260px 180px at 30% 30%, rgba(212,175,55,.18), transparent 60%),
+    radial-gradient(320px 220px at 70% 65%, rgba(124,58,237,.14), transparent 62%);
+  filter: blur(18px);
+  opacity:.85;
+}
+.holo-top{
+  position:relative;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom: 10px;
+}
+.holo-badge{
+  font-weight: 950;
+  letter-spacing: .14em;
+  font-size: 12px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(212,175,55,.22);
+  background: rgba(212,175,55,.10);
+}
+.holo-mini{ font-size: 12px; color: rgba(245,247,255,.62); }
+
+.holo-grid{
+  position:relative;
+  height: 130px;
+  border-radius: 18px;
+  background:
+    linear-gradient(transparent, rgba(255,255,255,.06)),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.09) 0 1px, transparent 1px 24px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.07) 0 1px, transparent 1px 24px);
+  opacity:.42;
+  transform: perspective(900px) rotateX(58deg);
+}
+.holo-scan{
+  position:absolute;
+  left:-20%;
+  top:46%;
+  width:140%;
+  height:2px;
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,.95), transparent);
+  filter: blur(.2px);
+  animation: scan 2.6s ease-in-out infinite;
+  opacity:.9;
+}
+@keyframes scan{
+  0%{ transform: translateY(-40px); opacity:.20;}
+  50%{ opacity:.95;}
+  100%{ transform: translateY(60px); opacity:.20;}
+}
+.holo-stats{
+  position:relative;
+  display:flex;
+  gap: 10px;
+  justify-content:center;
+  margin-top: 12px;
+  flex-wrap:wrap;
+}
+.holo-stats span{
+  font-size: 12px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.05);
+  color: rgba(245,247,255,.86);
+}
+
 @media (max-width: 1000px){
   .grid3{ grid-template-columns: 1fr; }
   .grid2{ grid-template-columns: 1fr; }
+}
+@media (max-width: 680px){
+  .orbit-wrap{ height: 320px; }
 }

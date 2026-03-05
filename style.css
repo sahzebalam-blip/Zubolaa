@@ -132,18 +132,15 @@ body::after{
 
 /* Metallic badge (works with Z or your logo image) */
 .logo{
-  width:44px; height:44px;
-  border-radius: 16px;
-  display:grid; place-items:center;
-  font-weight: 950;
-  color: rgba(255,255,255,.92);
+  width:46px;
+  height:46px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   border:1px solid rgba(212,175,55,.35);
-  background:
-    linear-gradient(135deg, rgba(212,175,55,.45), rgba(212,175,55,.08)),
-    radial-gradient(16px 16px at 30% 30%, rgba(255,255,255,.35), transparent 55%);
-  box-shadow:
-    0 14px 34px rgba(212,175,55,.12),
-    inset 0 0 0 1px rgba(255,255,255,.06);
+  background:rgba(212,175,55,.05);
+  box-shadow:0 10px 30px rgba(212,175,55,.15);
 }
 
 .brand-text .name{
@@ -459,3 +456,4 @@ hr.sep{
   .grid2{ grid-template-columns: 1fr; }
   .brand{ min-width: unset; }
 }
+

@@ -111,6 +111,10 @@ body::before{
 .brand{display:flex; align-items:center; gap:12px; min-width:220px;}
 
 .logo{
+height:38px;
+width:auto;
+object-fit:contain;
+}.logo{
   width:44px; height:44px;
   border-radius: 16px;
   display:flex; align-items:center; justify-content:center;
@@ -487,3 +491,4 @@ body::before{
 @media (max-width: 680px){
   .orbit-wrap{ height: 320px; }
 }
+

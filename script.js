@@ -1,43 +1,43 @@
-// Zubolaa - small helpers: active nav link + current year
-(function () {
-  const canvas=document.createElement("canvas");
-document.body.appendChild(canvas);
+const navLinks = document.querySelectorAll(".site-nav a");
+const sections = [...navLinks]
+  .map(link => document.querySelector(link.getAttribute("href")))
+  .filter(Boolean);
 
-const ctx=canvas.getContext("2d");
+const activateNav = () => {
+  let currentId = "home";
 
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-let particles=[];
-
-for(let i=0;i<40;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*2
-});
-}
-
-function draw(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-particles.forEach(p=>{
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-ctx.fillStyle="rgba(255,200,100,0.6)";
-ctx.fill();
-});
-requestAnimationFrame(draw);
-}
-
-draw();const path = (location.pathname.split("/").pop() || "index.html").toLowerCase();
-
-  document.querySelectorAll(".links a").forEach(a => {
-    const href = (a.getAttribute("href") || "").toLowerCase();
-    if (href === path) a.classList.add("active");
+  sections.forEach(section => {
+    const top = section.offsetTop - 120;
+    if (window.scrollY >= top) {
+      currentId = section.id;
+    }
   });
 
-  const y = document.getElementById("year");
-  if (y) y.textContent = String(new Date().getFullYear());
-})();
+  navLinks.forEach(link => {
+    const href = link.getAttribute("href").replace("#", "");
+    link.classList.toggle("active", href === currentId);
+  });
+};
 
+window.addEventListener("scroll", activateNav);
+window.addEventListener("load", activateNav);
+
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+const toggle = document.getElementById("menuToggle");
+const nav = document.getElementById("siteNav");
+
+if (toggle && nav) {
+  toggle.addEventListener("click", () => {
+    const isOpen = nav.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    });
+  });
+}

@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Zubolaa — Fintech Firm | Education • Strategy • Digital Infrastructure</title>
-  <meta name="description" content="Zubolaa is a fintech firm focused on structured education, strategy frameworks, and premium digital services: websites, designs, videos, marketing, and content." />
+  <meta name="description" content="Zubolaa is a fintech firm focused on structured education, strategy frameworks, digital infrastructure, and premium digital execution." />
+  <meta name="theme-color" content="#060812" />
   <link rel="canonical" href="https://zubolaa.com/" />
 
   <meta property="og:type" content="website" />
@@ -18,190 +19,397 @@
   <meta name="twitter:description" content="We build skills first. Then systems. Then scale." />
   <meta name="twitter:image" content="https://zubolaa.com/assets/og-cover.png" />
 
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"Zubolaa",
-    "url":"https://zubolaa.com/",
-<img src="./assets/zubolaa-logo.png" alt="Zubolaa Logo" class="logo">
-    "description":"Zubolaa is a fintech firm focused on structured education, strategy frameworks, and premium digital services.",
-    "contactPoint":[{
-      "@type":"ContactPoint",
-      "contactType":"sales",
-      "email":"rise@zubolaa.com"
-    }]
-  }
-  </script>
-
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./style.css" />
   <script defer src="./script.js"></script>
 </head>
 <body>
   <div class="bg-orbs"></div>
+  <div class="noise"></div>
 
-  <header class="nav">
-    <div class="nav-inner">
-      <a class="brand" href="index.html">
-        <div class="logo" style="padding:6px;">
-          <img src="./assets/zubolaa-logo.png" alt="Zubolaa Logo" style="width:100%;height:100%;object-fit:contain;">
+  <header class="site-header">
+    <div class="nav-shell">
+      <a href="#home" class="brand">
+        <div class="brand-logo">
+          <img src="./assets/zubolaa-logo.png" alt="Zubolaa logo">
         </div>
-        <div class="brand-text">
-          <div class="name">ZUBOLAA</div>
-          <div class="tag">Fintech Firm</div>
+        <div class="brand-copy">
+          <span class="brand-name">ZUBOLAA</span>
+          <span class="brand-tag">Fintech Firm</span>
         </div>
       </a>
 
-      <nav class="nav">
-<a href="#">Home</a>
-<a href="#about">About</a>
-<a href="#academy">Academy</a>
-<a href="#ecosystem">Ecosystem</a>
-<a href="#insights">Insights</a>
-<a href="#contact">Contact</a>
-<a href="disclaimer.html">Disclaimer</a>
-</nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
 
-      <a class="cta" href="contact.html">GET A QUOTE</a>
+      <nav class="site-nav" id="siteNav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#academy">Academy</a>
+        <a href="#ecosystem">Ecosystem</a>
+        <a href="#insights">Insights</a>
+        <a href="#contact">Contact</a>
+        <a href="#disclaimer">Disclaimer</a>
+      </nav>
+
+      <a href="#contact" class="nav-cta">GET A QUOTE</a>
     </div>
   </header>
 
-  <main class="wrap">
-    <section class="hero">
-      <div class="pill">⚡ Zubolaa • Education-first Fintech Ecosystem</div>
+  <main>
+    <section id="home" class="hero section">
+      <div class="container hero-inner">
+        <div class="hero-badge">⚡ Education-first fintech ecosystem</div>
 
-      <h1 class="h1">We build skills first. <span>Then systems.</span> Then scale.</h1>
+        <h1 class="hero-title">
+          We build skills first.
+          <span>Then systems.</span>
+          Then scale.
+        </h1>
 
-      <p class="sub">
-        Zubolaa is a multi-domain fintech firm focused on structured education, strategy frameworks,
-        and premium digital execution — websites, promotional designs, videos, social media marketing, and content writing.
-      </p>
+        <p class="hero-subtitle">
+          Zubolaa is a multi-domain fintech firm focused on structured education,
+          strategy frameworks, and premium digital execution — including websites,
+          promotional designs, videos, social media marketing, and content writing.
+        </p>
 
-      <div class="hero-actions">
-        <a class="btn primary" href="academy.html">Explore Academy</a>
-        <a class="btn" href="services.html">View Services</a>
-        <a class="btn ghost" href="contact.html">Contact</a>
-      </div>
-
-      <div class="orbit-wrap" aria-hidden="true">
-        <div class="orbit orbit-a"></div>
-        <div class="orbit orbit-b"></div>
-        <div class="orbit-dot dot1"></div>
-        <div class="orbit-dot dot2"></div>
-        <div class="orbit-dot dot3"></div>
-
-        <div class="holo-card">
-          <div class="holo-top">
-            <div class="holo-badge">ZUBOLAA</div>
-            <div class="holo-mini">Terminal Preview</div>
-          </div>
-          <div class="holo-grid"></div>
-          <div class="holo-scan"></div>
-          <div class="holo-stats">
-            <span>Education</span><span>Strategy</span><span>Infrastructure</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Live Market Strip</h2>
-      <p class="section-sub">Real-time pricing display via official TradingView widget.</p>
-
-      <div class="card glow">
-        <div class="tradingview-widget-container">
-          <div class="tradingview-widget-container__widget"></div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-          {
-            "symbols": [
-              {"proName":"FX_IDC:EURUSD","title":"EUR/USD"},
-              {"proName":"FX_IDC:GBPUSD","title":"GBP/USD"},
-              {"proName":"OANDA:XAUUSD","title":"Gold"},
-              {"proName":"TVC:USOIL","title":"WTI"},
-              {"proName":"NASDAQ:NDX","title":"US100"},
-              {"proName":"BINANCE:BTCUSDT","title":"BTC"},
-              {"proName":"BINANCE:ETHUSDT","title":"ETH"}
-            ],
-            "showSymbolLogo": true,
-            "isTransparent": true,
-            "displayMode": "adaptive",
-            "colorTheme": "dark",
-            "locale": "en"
-          }
-          </script>
-        </div>
-        <p class="mini">Educational display only — markets are risky. No guaranteed outcomes.</p>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>What Zubolaa Offers</h2>
-      <p class="section-sub">A clean ecosystem — education, execution, and premium digital production.</p>
-
-      <div class="grid3">
-        <div class="box">
-          <h3>Academy</h3>
-          <p>Structured learning from Pre-Basic to Advanced, built around risk discipline, psychology, and execution frameworks.</p>
-          <div class="chips">
-            <span>Courses</span><span>Modules</span><span>Daily Insights</span>
-          </div>
+        <div class="hero-actions">
+          <a href="#academy" class="btn btn-primary">Explore Academy</a>
+          <a href="#ecosystem" class="btn btn-secondary">View Ecosystem</a>
+          <a href="#contact" class="btn btn-ghost">Contact</a>
         </div>
 
-        <div class="box">
-          <h3>Services</h3>
-          <p>Websites, promotional designs, videos, social media marketing, and content writing with premium execution.</p>
-          <div class="chips">
-            <span>Web</span><span>Design</span><span>Video</span><span>Marketing</span>
-          </div>
-        </div>
+        <div class="orbit-stage" aria-hidden="true">
+          <div class="orbit orbit-lg"></div>
+          <div class="orbit orbit-md"></div>
+          <div class="orbit orbit-sm"></div>
 
-        <div class="box">
-          <h3>Principles</h3>
-          <p>Education compounds. Hype expires. Respect the rules. Protect capital. Momentum is permanent.</p>
-          <div class="chips">
-            <span>Discipline</span><span>Structure</span><span>Clarity</span>
+          <div class="particle gold p1"></div>
+          <div class="particle purple p2"></div>
+          <div class="particle cyan p3"></div>
+
+          <div class="terminal-card glass">
+            <div class="terminal-top">
+              <span class="terminal-badge">ZUBOLAA</span>
+              <span class="terminal-label">Terminal Preview</span>
+            </div>
+
+            <div class="terminal-grid"></div>
+            <div class="scanline"></div>
+
+            <div class="terminal-tags">
+              <span>Education</span>
+              <span>Strategy</span>
+              <span>Infrastructure</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <h2>Zubolaa Quotes</h2>
-      <p class="section-sub">The same mindset that shapes the brand — now built into the platform.</p>
-
-      <div class="grid2">
-        <div class="card">
-          <div class="card-title">Mindset</div>
-          <ul class="list">
-            <li>The chart reflects price — your mind reflects profit.</li>
-            <li>Respect the rules. Protect capital. Stay consistent.</li>
-            <li>Education compounds. Hype expires.</li>
-          </ul>
+    <section class="section market-section">
+      <div class="container">
+        <div class="section-head center">
+          <p class="eyebrow">Live display</p>
+          <h2>Live Market Strip</h2>
+          <p>Real-time pricing display via official TradingView widget.</p>
         </div>
 
-        <div class="card">
-          <div class="card-title">Execution</div>
-          <ul class="list">
-            <li>We build skills first. Then systems. Then scale.</li>
-            <li>Process before profit.</li>
-            <li>Momentum is permanent.</li>
-          </ul>
-          <div class="hero-actions" style="margin-top:14px;">
-            <a class="btn primary" href="academy.html">Academy</a>
-            <a class="btn" href="services.html">Services</a>
+        <div class="panel glow-panel">
+          <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+            {
+              "symbols": [
+                {"proName":"FX_IDC:EURUSD","title":"EUR/USD"},
+                {"proName":"FX_IDC:GBPUSD","title":"GBP/USD"},
+                {"proName":"OANDA:XAUUSD","title":"Gold"},
+                {"proName":"TVC:USOIL","title":"WTI"},
+                {"proName":"NASDAQ:NDX","title":"US100"},
+                {"proName":"BINANCE:BTCUSDT","title":"BTC"},
+                {"proName":"BINANCE:ETHUSDT","title":"ETH"}
+              ],
+              "showSymbolLogo": true,
+              "isTransparent": true,
+              "displayMode": "adaptive",
+              "colorTheme": "dark",
+              "locale": "en"
+            }
+            </script>
           </div>
+          <p class="tiny-note">Educational display only. Markets are risky. No guaranteed outcomes.</p>
         </div>
       </div>
     </section>
 
-    <footer class="footer">
-      <div class="mini">© <span id="year"></span> Zubolaa. All rights reserved.</div>
-      <div class="mini">Email: rise@zubolaa.com</div>
-    </footer>
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-head center">
+          <p class="eyebrow">About Zubolaa</p>
+          <h2>Where education, strategy and digital execution meet.</h2>
+          <p>
+            Zubolaa is built around clarity, discipline, and systems. We do not build hype.
+            We build structured learning, strategic thinking, and premium digital presence.
+          </p>
+        </div>
+
+        <div class="cards-grid three">
+          <article class="card glass equal">
+            <h3>Education First</h3>
+            <p>
+              We build disciplined thinking: structure, risk management, psychology,
+              and execution clarity.
+            </p>
+            <div class="chip-row">
+              <span>Forex</span>
+              <span>Indices</span>
+              <span>Commodities</span>
+            </div>
+          </article>
+
+          <article class="card glass equal">
+            <h3>Fintech Presence</h3>
+            <p>
+              Luxury black-gold websites and digital systems built to look premium,
+              modern, and institutional.
+            </p>
+            <div class="chip-row">
+              <span>UI/UX</span>
+              <span>Responsive</span>
+              <span>Fast</span>
+            </div>
+          </article>
+
+          <article class="card glass equal">
+            <h3>Media & Content</h3>
+            <p>
+              High-impact reels, explainers, decks, blog content and brand messaging
+              with strong visual identity.
+            </p>
+            <div class="chip-row">
+              <span>Design</span>
+              <span>Video</span>
+              <span>Copy</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="quote-band">
+          <div class="quote-item">Education compounds. Hype expires.</div>
+          <div class="quote-item">Respect the rules. Protect capital.</div>
+          <div class="quote-item">The chart reflects price — your mind reflects profit.</div>
+          <div class="quote-item">Momentum is permanent.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="academy" class="section">
+      <div class="container">
+        <div class="section-head center">
+          <p class="eyebrow">Academy</p>
+          <h2>Structured education and strategy access.</h2>
+          <p>
+            A complete academy hub for learners who want to build clarity, discipline,
+            and a repeatable routine.
+          </p>
+        </div>
+
+        <div class="cards-grid three">
+          <article class="card glass equal">
+            <h3>Starter Access — $251</h3>
+            <p>For beginners or learners restarting their journey.</p>
+            <ul>
+              <li>Pre-Basic onboarding</li>
+              <li>Foundation modules</li>
+              <li>Risk management fundamentals</li>
+              <li>Educational market insights</li>
+            </ul>
+          </article>
+
+          <article class="card glass equal">
+            <h3>Growth Access — $501</h3>
+            <p>For learners building structure and discipline.</p>
+            <ul>
+              <li>Foundation + intermediate modules</li>
+              <li>Risk discipline system</li>
+              <li>Execution checklists</li>
+              <li>Daily insights + weekly recap</li>
+            </ul>
+          </article>
+
+          <article class="card glass equal">
+            <h3>Advanced Access — $1001</h3>
+            <p>For serious learners building a professional routine.</p>
+            <ul>
+              <li>Advanced strategy frameworks</li>
+              <li>Multi-timeframe analysis</li>
+              <li>Weekly structure breakdown</li>
+              <li>Performance journaling system</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="cards-grid two academy-bottom">
+          <article class="panel glass">
+            <h3>Customized Program</h3>
+            <p>
+              A structured path based on Pre-Basic knowledge assessment,
+              psychology test result, risk profile, and time availability.
+            </p>
+            <ul>
+              <li>Knowledge evaluation</li>
+              <li>Psychology review</li>
+              <li>Suggested learning track</li>
+            </ul>
+          </article>
+
+          <article class="panel glow-panel">
+            <h3>Academy Philosophy</h3>
+            <p class="big-quote">We build skills first. Then systems. Then scale.</p>
+            <p class="tiny-note">Education only. No guaranteed outcomes.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="ecosystem" class="section">
+      <div class="container">
+        <div class="section-head center">
+          <p class="eyebrow">Ecosystem</p>
+          <h2>One ecosystem. Multiple high-value verticals.</h2>
+          <p>
+            Zubolaa combines education, digital infrastructure, market research,
+            content systems, and ecosystem development into one clean structure.
+          </p>
+        </div>
+
+        <div class="cards-grid two">
+          <article class="panel glass">
+            <h3>Zubolaa Ecosystem</h3>
+            <ul>
+              <li>Trading education</li>
+              <li>Zubolaa token ecosystem</li>
+              <li>Website development</li>
+              <li>Digital marketing</li>
+              <li>Social media branding</li>
+              <li>Market research</li>
+            </ul>
+          </article>
+
+          <article class="panel glass">
+            <h3>Core Promise</h3>
+            <ul>
+              <li>Institutional design language</li>
+              <li>Transparent communication & risk awareness</li>
+              <li>Education + strategy frameworks</li>
+              <li>Premium digital execution</li>
+            </ul>
+
+            <div class="hero-actions left">
+              <a href="#contact" class="btn btn-primary">Get a Quote</a>
+              <a href="#disclaimer" class="btn btn-secondary">Risk & Disclaimer</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="insights" class="section">
+      <div class="container">
+        <div class="section-head center">
+          <p class="eyebrow">Insights</p>
+          <h2>Daily market ideas — educational only.</h2>
+          <p>
+            Update this section daily with your market view, levels, session focus,
+            and risk reminders. I’ll help you write it cleanly every day.
+          </p>
+        </div>
+
+        <div class="panel glass">
+          <h3>Daily Insight Template</h3>
+          <div class="template-grid">
+            <div><strong>Date:</strong> [Update daily]</div>
+            <div><strong>Session Focus:</strong> Asia / London / New York</div>
+            <div><strong>Market:</strong> Forex / Gold / Crypto / Indices</div>
+            <div><strong>Context:</strong> Range / Trend / Breakout watch</div>
+            <div><strong>Key Levels:</strong> Support / Resistance / Liquidity</div>
+            <div><strong>Risk Reminder:</strong> Max daily loss. No revenge trading.</div>
+          </div>
+          <p class="insight-quote">“The chart reflects price — your mind reflects profit.”</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-head center">
+          <p class="eyebrow">Contact</p>
+          <h2>Let’s build something premium — with structure.</h2>
+          <p>
+            For academy access, web development, designs, videos, marketing, or content writing.
+          </p>
+        </div>
+
+        <div class="cards-grid two">
+          <article class="panel glass">
+            <h3>Email</h3>
+            <p class="contact-line">rise@zubolaa.com</p>
+            <p class="tiny-note">Share your requirement, budget, and timeline.</p>
+          </article>
+
+          <article class="panel glow-panel">
+            <h3>Quick Inquiry Format</h3>
+            <ul>
+              <li>Name</li>
+              <li>Requirement</li>
+              <li>Budget</li>
+              <li>Timeline</li>
+              <li>Notes</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="disclaimer" class="section disclaimer-section">
+      <div class="container">
+        <div class="section-head center">
+          <p class="eyebrow">Disclaimer</p>
+          <h2>Risk & regulatory notice.</h2>
+          <p>Transparency protects your brand and your users.</p>
+        </div>
+
+        <div class="cards-grid two">
+          <article class="panel glass">
+            <h3>Important</h3>
+            <ul>
+              <li>Zubolaa provides educational content and digital services.</li>
+              <li>We are not SEBI registered as an investment advisor or research analyst.</li>
+              <li>Nothing on this website is financial advice or a profit guarantee.</li>
+            </ul>
+          </article>
+
+          <article class="panel glass">
+            <h3>Risk Disclosure</h3>
+            <ul>
+              <li>Trading and digital assets involve significant risk.</li>
+              <li>Loss of capital is possible.</li>
+              <li>Past performance is not indicative of future results.</li>
+              <li>Users are responsible for their own decisions.</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="footer-quote">We build skills first. Then systems. Then scale.</p>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Zubolaa. All rights reserved.</p>
+      <p>rise@zubolaa.com</p>
+    </div>
+  </footer>
 </body>
 </html>
-
-
-
-

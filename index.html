@@ -1,218 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zubolaa | Universe</title>
-  <link rel="stylesheet" href="style.css" />
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Zubolaa Universe</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
-  <section class="hero">
-    <div class="hero-noise"></div>
+<section class="hero">
 
-    <div class="stars">
-      <span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span><span></span>
-    </div>
+<div class="hero-content">
 
-    <div class="aurora aurora-1"></div>
-    <div class="aurora aurora-2"></div>
-    <div class="aurora aurora-3"></div>
+<h1>WELCOME TO ZUBOLAA</h1>
 
-    <div class="content">
-      <div class="eyebrow">Zubolaa Universe • Digital Ecosystem • Premium Experience</div>
+<p class="tagline">
+Connecting Knowledge, Markets, and Digital Opportunities
+</p>
 
-      <h1 class="title">
-        <span class="title-top">Welcome to</span>
-        <span class="title-main">Zubolaa</span>
-      </h1>
+<p class="subtext">
+Enter the Zubolaa Universe where learning, innovation, and digital ecosystems evolve into real opportunities.
+</p>
 
-      <p class="tagline">
-        Connecting Knowledge, Markets, and Digital Opportunities.
-      </p>
+<button id="enterBtn">Enter Ecosystem</button>
 
-      <p class="sub">
-        Welcome to a ZubiVerse where vision evolves into real digital possibilities through learning, market awareness, innovation, and digital ecosystem participation.
-      </p>
+</div>
 
-      <div class="hero-actions">
-        <button class="hero-btn primary" id="heroEnter">Enter Ecosystem</button>
-        <button class="hero-btn secondary" id="heroGuide">Open Zubi Guide</button>
-      </div>
-    </div>
-  </section>
+</section>
 
-  <button class="bot" id="botOpen" aria-label="Open Zubi Guide">
-    <span class="bot-core"></span>
-    <span class="bot-ring ring-one"></span>
-    <span class="bot-ring ring-two"></span>
-    <span class="bot-face">
-      <span class="eye left"></span>
-      <span class="eye right"></span>
-      <span class="mouth"></span>
-    </span>
-  </button>
 
-  <div class="bot-panel" id="botPanel">
-    <div class="bot-panel-header">
-      <div class="bot-mini"></div>
-      <div class="bot-panel-headings">
-        <h3>Zubi Guide</h3>
-        <p>Cosmic navigation assistant</p>
-      </div>
-    </div>
+<div class="cards" id="cards">
 
-    <div class="bot-panel-body">
-      Welcome to Zubolaa Universe. Open the ecosystem portals and choose the destination you want to explore.
-    </div>
+<div class="card" onclick="openPage('academy.html')">
 
-    <div class="bot-actions">
-      <button class="bot-btn primary" id="openCards">Open Portals</button>
-      <button class="bot-btn secondary" id="closePanel">Close</button>
-    </div>
-  </div>
+<h2>Zubolaa Academy</h2>
 
-  <div class="cards-overlay" id="cardsOverlay">
-    <div class="cards-box">
-      <div class="cards-head">
-        <div>
-          <h2>Zubolaa Universe</h2>
-          <p>Select a portal to continue your journey.</p>
-        </div>
-        <button class="close-btn" id="closeCards">×</button>
-      </div>
+<p>
+A cosmic learning portal for financial markets,
+discipline, and digital opportunity.
+</p>
 
-      <div class="cards-grid">
+</div>
 
-        <div class="card academy" data-link="zubolaa-academy.html">
-          <div class="card-glow"></div>
-          <div class="card-content">
-            <span class="card-label">Learning Hub</span>
-            <h4>Zubolaa Academy</h4>
-            <p>Build market psychology, understand forex and crypto, and strengthen risk management foundations.</p>
-          </div>
-        </div>
 
-        <div class="card markets" data-link="zubolaa-markets.html">
-          <div class="card-glow"></div>
-          <div class="card-content">
-            <span class="card-label">Markets Space</span>
-            <h4>Zubolaa Markets</h4>
-            <p>Learn markets, explore insights, and develop a practical understanding of global financial systems.</p>
-          </div>
-        </div>
+<div class="card">
 
-        <div class="card token" data-link="zubolaa-token.html">
-          <div class="card-glow"></div>
-          <div class="card-content">
-            <span class="card-label">Utility Layer</span>
-            <h4>Zubolaa Token</h4>
-            <p>Explore the utility vision powering access, ecosystem interaction, participation pathways, and future integration.</p>
-          </div>
-        </div>
+<h2>Zubolaa Markets</h2>
 
-        <div class="card digihub" data-link="digihub.html">
-          <div class="card-glow"></div>
-          <div class="card-content">
-            <span class="card-label">Digital Innovation Hub</span>
-            <h4>Al Fattah Endless Horizons DigiHub</h4>
-            <p>Web development, digital ventures, online infrastructure, and innovation-driven digital solutions.</p>
-          </div>
-        </div>
+<p>
+Explore global markets and develop
+a deeper understanding of financial systems.
+</p>
 
-        <div class="card partners" data-link="business-partners.html">
-          <div class="card-glow"></div>
-          <div class="card-content">
-            <span class="card-label">Affiliation Network</span>
-            <h4>Business Partners</h4>
-            <p>Explore affiliate and partner participation models, collaboration pathways, and ecosystem-based business opportunities.</p>
-            <small class="card-disclaimer">
-              Participation structures are subject to terms, eligibility, and applicable disclaimers. No guaranteed returns are implied.
-            </small>
-          </div>
-        </div>
+</div>
 
-        <div class="card vision" data-link="vision.html">
-          <div class="card-glow"></div>
-          <div class="card-content">
-            <span class="card-label">Long-Term Direction</span>
-            <h4>Vision</h4>
-            <p>From learner to ecosystem builder — discover the broader mission, future path, and digital evolution of Zubolaa.</p>
-          </div>
-        </div>
 
-      </div>
-    </div>
-  </div>
+<div class="card">
 
-  <div class="loading" id="loadingScreen">
-    <div class="loader-wrap">
-      <div class="loader-ring"></div>
-      <div class="loader-core"></div>
-    </div>
-    <p>Loading Zubolaa...</p>
-  </div>
+<h2>Zubolaa Token</h2>
 
-  <script>
-    const botOpen = document.getElementById("botOpen");
-    const botPanel = document.getElementById("botPanel");
-    const openCards = document.getElementById("openCards");
-    const closePanel = document.getElementById("closePanel");
-    const cardsOverlay = document.getElementById("cardsOverlay");
-    const closeCards = document.getElementById("closeCards");
-    const loadingScreen = document.getElementById("loadingScreen");
-    const cards = document.querySelectorAll(".card");
-    const heroEnter = document.getElementById("heroEnter");
-    const heroGuide = document.getElementById("heroGuide");
+<p>
+Utility designed to support participation
+inside the Zubolaa digital ecosystem.
+</p>
 
-    botOpen.addEventListener("click", () => {
-      botPanel.classList.toggle("active");
-    });
+</div>
 
-    heroGuide.addEventListener("click", () => {
-      botPanel.classList.add("active");
-    });
 
-    heroEnter.addEventListener("click", () => {
-      cardsOverlay.classList.add("active");
-      botPanel.classList.remove("active");
-    });
+<div class="card">
 
-    closePanel.addEventListener("click", () => {
-      botPanel.classList.remove("active");
-    });
+<h2>DigiHub</h2>
 
-    openCards.addEventListener("click", () => {
-      botPanel.classList.remove("active");
-      cardsOverlay.classList.add("active");
-    });
+<p>
+Digital innovation hub for web,
+technology, and digital ventures.
+</p>
 
-    closeCards.addEventListener("click", () => {
-      cardsOverlay.classList.remove("active");
-    });
+</div>
 
-    cardsOverlay.addEventListener("click", (e) => {
-      if (e.target === cardsOverlay) {
-        cardsOverlay.classList.remove("active");
-      }
-    });
 
-    cards.forEach((card, index) => {
-      card.style.animationDelay = `${0.08 * index}s`;
+<div class="card">
 
-      card.addEventListener("click", () => {
-        const targetLink = card.getAttribute("data-link");
-        loadingScreen.classList.add("active");
+<h2>Business Partners</h2>
 
-        setTimeout(() => {
-          window.location.href = targetLink;
-        }, 1400);
-      });
-    });
-  </script>
+<p>
+Affiliation based participation models
+for ecosystem collaboration.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>Vision</h2>
+
+<p>
+From learner to ecosystem builder —
+discover the future direction of Zubolaa.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="bot" id="bot">
+Z
+</div>
+
+
+<script>
+
+const btn = document.getElementById("enterBtn")
+const cards = document.getElementById("cards")
+
+btn.onclick = () => {
+cards.style.display = "grid"
+}
+
+function openPage(page){
+window.location.href = page
+}
+
+</script>
+
 </body>
 </html>

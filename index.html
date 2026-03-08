@@ -6,9 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Zubiverse</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Zubolaa</title>
 
 <style>
 
@@ -20,10 +18,9 @@ box-sizing:border-box;
 
 body{
 
-font-family:"Space Grotesk",sans-serif;
+font-family:Arial, Helvetica, sans-serif;
 background:#000;
 color:white;
-overflow-x:hidden;
 
 }
 
@@ -32,76 +29,24 @@ overflow-x:hidden;
 .hero{
 
 height:100vh;
+
 display:flex;
 align-items:center;
 justify-content:center;
+
 text-align:center;
-position:relative;
-overflow:hidden;
-
-background:
-radial-gradient(circle at 20% 30%,#4c1d95 0%,transparent 35%),
-radial-gradient(circle at 80% 70%,#f59e0b 0%,transparent 35%),
-#000;
-
-}
-
-/* NEBULA */
-
-.hero::before{
-
-content:"";
-position:absolute;
-width:160%;
-height:160%;
 
 background:
 
-radial-gradient(circle at 40% 50%,rgba(168,85,247,.4),transparent 40%),
-radial-gradient(circle at 70% 60%,rgba(245,158,11,.4),transparent 40%);
+linear-gradient(
+rgba(0,0,0,.65),
+rgba(0,0,0,.85)
+),
 
-filter:blur(120px);
+url("zubolaa-bg.jpg");
 
-animation:nebula 25s linear infinite;
-
-}
-
-@keyframes nebula{
-
-0%{transform:rotate(0deg)}
-100%{transform:rotate(360deg)}
-
-}
-
-/* PLANET */
-
-.planet{
-
-position:absolute;
-
-width:520px;
-height:520px;
-
-border-radius:50%;
-
-background:
-
-radial-gradient(circle at 30% 30%,#ffd84a,#f59e0b,#3b0764);
-
-box-shadow:
-
-0 0 120px rgba(255,200,0,.4);
-
-animation:spin 50s linear infinite;
-
-z-index:1;
-
-}
-
-@keyframes spin{
-
-from{transform:rotate(0deg)}
-to{transform:rotate(360deg)}
+background-size:cover;
+background-position:center;
 
 }
 
@@ -109,9 +54,8 @@ to{transform:rotate(360deg)}
 
 .content{
 
-position:relative;
-z-index:2;
 max-width:900px;
+padding:20px;
 
 }
 
@@ -119,9 +63,9 @@ max-width:900px;
 
 .title{
 
-font-family:"Orbitron",sans-serif;
-font-size:64px;
-letter-spacing:3px;
+font-size:70px;
+letter-spacing:4px;
+font-weight:700;
 
 background:linear-gradient(90deg,#fff,#ffd84a,#fff);
 
@@ -129,14 +73,14 @@ background:linear-gradient(90deg,#fff,#ffd84a,#fff);
 -webkit-text-fill-color:transparent;
 
 text-shadow:
+0 0 25px rgba(255,216,74,.6),
+0 0 40px rgba(255,216,74,.4);
 
-0 0 25px rgba(255,216,74,.6);
-
-margin-bottom:20px;
+margin-bottom:25px;
 
 }
 
-/* TEXT */
+/* TAGLINE */
 
 .tagline{
 
@@ -146,31 +90,12 @@ opacity:.9;
 
 }
 
+/* SUB TEXT */
+
 .sub{
 
 font-size:18px;
-opacity:.75;
-
-}
-
-/* STARS */
-
-.stars span{
-
-position:absolute;
-width:2px;
-height:2px;
-background:white;
-border-radius:50%;
-
-animation:starMove 14s linear infinite;
-
-}
-
-@keyframes starMove{
-
-0%{transform:translateY(0)}
-100%{transform:translateY(-1200px)}
+opacity:.8;
 
 }
 
@@ -209,28 +134,16 @@ box-shadow:0 15px 40px rgba(0,0,0,.4);
 
 <section class="hero">
 
-<div class="planet"></div>
-
-<div class="stars">
-
-<span style="left:10%;top:90%"></span>
-<span style="left:30%;top:85%"></span>
-<span style="left:50%;top:95%"></span>
-<span style="left:70%;top:88%"></span>
-<span style="left:90%;top:92%"></span>
-
-</div>
-
 <div class="content">
 
-<h1 class="title">WELCOME TO ZUBIVERSE</h1>
+<h1 class="title">WELCOME TO ZUBOLAA</h1>
 
 <p class="tagline">
 Connecting Knowledge, Markets, and Digital Opportunities.
 </p>
 
 <p class="sub">
-Welcome to a ZubiVerse where vision evolves into real digital possibilities.
+Welcome to the Zubolaa ecosystem where vision evolves into real digital possibilities.
 </p>
 
 </div>
@@ -240,4 +153,5 @@ Welcome to a ZubiVerse where vision evolves into real digital possibilities.
 <div class="bot">🤖</div>
 
 </body>
+
 </html>

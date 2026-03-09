@@ -1,154 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Zubolaa</title>
-
-<link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zubolaa | Digital Learning, Markets and Innovation</title>
+  <meta
+    name="description"
+    content="Zubolaa is a premium digital platform connecting learning, markets, innovation, token utility, and digital business infrastructure."
+  />
+  <meta
+    name="keywords"
+    content="Zubolaa, digital learning, financial markets, academy, token, digital hub, innovation"
+  />
+  <meta name="theme-color" content="#0a0710" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
-
 <body>
-
-
-<section class="hero">
-
-<div class="hero-content">
-
-<h1>WELCOME TO ZUBOLAA</h1>
-
-<p class="tagline">
-Connecting Knowledge, Markets, and Digital Opportunities
-</p>
-
-<p class="subtext">
-Zubolaa brings together learning, financial market understanding,
-digital ventures, and ecosystem collaboration through a structured platform.
-</p>
-
-</div>
-
-</section>
-
-
-<div class="bot" id="bot">
-
-<span>Z</span>
-
-</div>
-
-
-
-<section class="cards" id="cards">
-
-
-
-<div class="card academy" onclick="openPage('academy.html')">
-
-<h2>Zubolaa Academy</h2>
-
-<p>
-Structured learning programs designed to build
-financial market understanding and disciplined participation.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>Zubolaa Markets</h2>
-
-<p>
-Insights, education, and awareness around global
-financial markets and digital assets.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>Zubolaa Token</h2>
-
-<p>
-A utility-focused digital asset designed to support
-the broader Zubolaa ecosystem.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>Endless Horizons DigiHub</h2>
-
-<p>
-Digital development, technology services,
-and online venture infrastructure.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>Business Partners</h2>
-
-<p>
-Affiliation-based collaboration models within
-the Zubolaa ecosystem framework.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>Vision</h2>
-
-<p>
-A long-term direction focused on digital growth,
-education, and ecosystem participation.
-</p>
-
-</div>
-
-
-
-</section>
-
-
-
-<script>
-
-const bot = document.getElementById("bot")
-const cards = document.getElementById("cards")
-
-bot.onclick = () => {
-
-cards.style.display = "grid"
-
-}
-
-function openPage(page){
-
-window.location.href = page
-
-}
-
-</script>
-
-
+  <main class="hero" aria-label="Zubolaa homepage">
+    <div class="hero-overlay"></div>
+    <div class="hero-ambient hero-ambient-one"></div>
+    <div class="hero-ambient hero-ambient-two"></div>
+    <div class="hero-ambient hero-ambient-three"></div>
+
+    <div class="stars" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span>
+    </div>
+
+    <section class="hero-content">
+      <img src="logo.png" alt="Zubolaa logo" class="hero-logo" />
+
+      <p class="hero-kicker">Premium Digital Platform</p>
+
+      <h1>WELCOME TO ZUBOLAA</h1>
+
+      <p class="hero-tagline">
+        Connecting Knowledge, Markets, and Digital Opportunities.
+      </p>
+
+      <p class="hero-subtext">
+        Zubolaa brings together structured learning, digital innovation,
+        market understanding, and ecosystem-focused growth through a refined
+        premium experience.
+      </p>
+    </section>
+
+    <button
+      class="bot"
+      id="botToggle"
+      type="button"
+      aria-label="Open Zubolaa navigation"
+      aria-expanded="false"
+      aria-controls="navCards"
+    >
+      <span class="bot-core"></span>
+      <span class="bot-ring bot-ring-one"></span>
+      <span class="bot-ring bot-ring-two"></span>
+      <span class="bot-face">
+        <span class="bot-eye bot-eye-left"></span>
+        <span class="bot-eye bot-eye-right"></span>
+        <span class="bot-mouth"></span>
+      </span>
+    </button>
+
+    <div class="bot-hint" id="botHint">Open Navigation</div>
+
+    <section
+      class="card-stage"
+      id="navCards"
+      aria-label="Main navigation cards"
+      aria-hidden="true"
+    >
+      <button class="nav-card card-about" data-link="about.html" type="button">
+        <span>ABOUT</span>
+      </button>
+
+      <button class="nav-card card-academy" data-link="academy.html" type="button">
+        <span>ZUBOLAA ACADEMY</span>
+      </button>
+
+      <button class="nav-card card-token" data-link="zubolaa-token.html" type="button">
+        <span>ZUBOLAA TOKEN</span>
+      </button>
+
+      <button class="nav-card card-digihub" data-link="digihub.html" type="button">
+        <span>ZUBOLAA DIGIHUB</span>
+      </button>
+
+      <button class="nav-card card-contact" data-link="contact.html" type="button">
+        <span>CONTACT</span>
+      </button>
+    </section>
+
+    <div class="loading-screen" id="loadingScreen" aria-hidden="true">
+      <div class="loading-orb">
+        <span class="loading-ring"></span>
+        <span class="loading-core"></span>
+      </div>
+      <p>Loading...</p>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>

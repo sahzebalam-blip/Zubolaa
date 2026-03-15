@@ -47,17 +47,39 @@
   <link rel="stylesheet" href="css/home.css" />
   <link rel="stylesheet" href="css/bot.css" />
 </head>
-<body>
+<body class="home-page">
   <div class="site-ambient" aria-hidden="true">
     <span class="ambient ambient-blue"></span>
     <span class="ambient ambient-gold"></span>
     <span class="ambient ambient-grid"></span>
   </div>
 
+  <!-- Homepage universe background -->
+  <div class="homepage-universe" aria-hidden="true">
+    <span class="universe-layer universe-nebula nebula-one"></span>
+    <span class="universe-layer universe-nebula nebula-two"></span>
+    <span class="universe-layer universe-glow glow-one"></span>
+    <span class="universe-layer universe-glow glow-two"></span>
+    <span class="universe-layer universe-grid"></span>
+    <span class="universe-layer universe-stars"></span>
+    <span class="universe-layer universe-orbit orbit-one"></span>
+    <span class="universe-layer universe-orbit orbit-two"></span>
+  </div>
+
   <header class="site-header">
     <div class="container header-wrap">
       <a href="index.html" class="brand-mark" aria-label="Zubolaa Home">
-        <img src="assets/logos/zubolaa-logo.svg" alt="Zubolaa logo" />
+        <span class="brand-badge-shell">
+          <span class="brand-badge-glow"></span>
+          <span class="brand-badge-frame">
+            <img src="assets/logos/zubolaa-logo.svg" alt="Zubolaa logo" class="brand-logo" />
+          </span>
+        </span>
+
+        <span class="brand-meta">
+          <span class="brand-title">Zubolaa</span>
+          <span class="brand-subtitle">Premium Digital Ecosystem</span>
+        </span>
       </a>
 
       <nav class="main-nav" aria-label="Primary Navigation">
@@ -79,23 +101,41 @@
 
   <main>
     <section class="cinematic-opening city-opening" aria-label="Zubolaa opening scene">
+      <div class="opening-particles" aria-hidden="true">
+        <span class="particle particle-1"></span>
+        <span class="particle particle-2"></span>
+        <span class="particle particle-3"></span>
+        <span class="particle particle-4"></span>
+      </div>
+
       <div class="cinematic-media">
-        <img
-          src="assets/images/hero/zubolaa-hero.png"
-          alt="Zubolaa ecosystem opening background"
-          class="hero-image"
-        />
+        <div class="hero-image-shell">
+          <span class="hero-image-aura"></span>
+          <img
+            src="assets/images/hero/zubolaa-hero.png"
+            alt="Zubolaa ecosystem opening background"
+            class="hero-image"
+          />
+        </div>
       </div>
 
       <div class="cinematic-overlay"></div>
 
+      <div class="opening-bottom-fade" aria-hidden="true"></div>
+
       <a href="#hero" class="scroll-indicator scroll-indicator-opening" aria-label="Scroll to homepage">
         <span class="scroll-indicator-line"></span>
+        <span class="scroll-indicator-dot"></span>
         <span class="scroll-indicator-text">Scroll</span>
       </a>
     </section>
 
     <section class="hero-section" id="hero">
+      <div class="hero-section-glows" aria-hidden="true">
+        <span class="hero-glow hero-glow-one"></span>
+        <span class="hero-glow hero-glow-two"></span>
+      </div>
+
       <div class="container hero-grid">
         <div class="hero-copy">
           <p class="section-eyebrow">Premium Digital Ecosystem</p>
@@ -121,6 +161,8 @@
         </div>
 
         <div class="hero-visual">
+          <div class="hero-visual-backdrop"></div>
+
           <div class="hero-orbital-card">
             <span class="orbital-ring ring-one"></span>
             <span class="orbital-ring ring-two"></span>
@@ -163,6 +205,7 @@
         <div class="gateway-grid">
           <a href="about.html" class="gateway-card">
             <span class="gateway-pointer-glow" aria-hidden="true"></span>
+            <span class="gateway-live-line" aria-hidden="true"></span>
             <span class="card-tag">Platform Vision</span>
             <h3>About Zubolaa</h3>
             <p>The structure, identity and long-horizon thinking behind the ecosystem.</p>
@@ -170,6 +213,7 @@
 
           <a href="academy.html" class="gateway-card">
             <span class="gateway-pointer-glow" aria-hidden="true"></span>
+            <span class="gateway-live-line" aria-hidden="true"></span>
             <span class="card-tag">Knowledge Layer</span>
             <h3>Zubolaa Academy</h3>
             <p>A learning layer designed to create clarity before complexity.</p>
@@ -177,6 +221,7 @@
 
           <a href="markets.html" class="gateway-card">
             <span class="gateway-pointer-glow" aria-hidden="true"></span>
+            <span class="gateway-live-line" aria-hidden="true"></span>
             <span class="card-tag">Market Interface</span>
             <h3>Markets</h3>
             <p>A refined environment for market-facing discovery and future expansion.</p>
@@ -184,6 +229,7 @@
 
           <a href="participation.html" class="gateway-card">
             <span class="gateway-pointer-glow" aria-hidden="true"></span>
+            <span class="gateway-live-line" aria-hidden="true"></span>
             <span class="card-tag">Participation Pathway</span>
             <h3>Market Participation</h3>
             <p>A guided pathway designed to simplify how users move forward.</p>
@@ -191,6 +237,7 @@
 
           <a href="digi-hub.html" class="gateway-card">
             <span class="gateway-pointer-glow" aria-hidden="true"></span>
+            <span class="gateway-live-line" aria-hidden="true"></span>
             <span class="card-tag">Digital Utility</span>
             <h3>Al Fattah Digi Hub</h3>
             <p>Digital tools, guided interfaces and automation-oriented experiences.</p>
@@ -198,6 +245,7 @@
 
           <a href="contact.html" class="gateway-card">
             <span class="gateway-pointer-glow" aria-hidden="true"></span>
+            <span class="gateway-live-line" aria-hidden="true"></span>
             <span class="card-tag">Access Point</span>
             <h3>Contact / Access</h3>
             <p>Connect with the team or move toward the next stage of entry.</p>
@@ -231,7 +279,9 @@
         </div>
 
         <div class="zubot-panel">
-          <div class="bot-window">
+          <div class="bot-window premium-bot-window">
+            <div class="bot-window-glow" aria-hidden="true"></div>
+
             <div class="bot-header">
               <div class="bot-badge">
                 <span class="bot-dot"></span>

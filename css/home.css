@@ -76,7 +76,7 @@
     linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 64px 64px;
   opacity: 0.22;
-  mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 34%, rgba(0,0,0,0.26) 78%, transparent 100%);
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 34%, rgba(0, 0, 0, 0.26) 78%, transparent 100%);
 }
 
 .universe-stars {
@@ -192,6 +192,18 @@
   overflow: hidden;
 }
 
+.hero-image-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, transparent 12%, rgba(255,255,255,0.07) 34%, transparent 58%);
+  transform: translateX(-120%);
+  animation: heroShine 5.5s ease-in-out infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
 .hero-video,
 .hero-image {
   width: 100%;
@@ -202,14 +214,14 @@
 .hero-image {
   animation:
     heroImageReveal 1.4s cubic-bezier(.2, .8, .2, 1) forwards,
-    heroImageFloat 7.5s ease-in-out 1.6s infinite;
+    heroImageFloat 6.2s ease-in-out 1.2s infinite;
   transform: scale(1.08);
-  will-change: transform;
+  will-change: transform, filter;
 }
 
 .city-opening .hero-image {
   object-position: center center;
-  filter: brightness(0.64) contrast(1.12) saturate(1.05);
+  filter: brightness(0.52) contrast(1.14) saturate(1.04);
 }
 
 .hero-image-aura {
@@ -237,7 +249,41 @@
   animation: glowPulse 11s ease-in-out infinite reverse;
 }
 
+.cinematic-overlay {
+  z-index: 2;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(2, 6, 12, 0.26) 0%,
+      rgba(4, 9, 17, 0.34) 20%,
+      rgba(4, 9, 17, 0.78) 74%,
+      rgba(4, 9, 17, 0.98) 100%
+    );
+}
 
+.cinematic-overlay-secondary {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    radial-gradient(circle at 72% 36%, rgba(77,124,255,0.18), transparent 24%),
+    radial-gradient(circle at 26% 60%, rgba(214,168,95,0.10), transparent 20%),
+    linear-gradient(90deg, rgba(4,9,19,0.42) 0%, transparent 22%, transparent 78%, rgba(4,9,19,0.36) 100%);
+  mix-blend-mode: screen;
+  opacity: 0.95;
+}
+
+.cinematic-opening::after,
+.opening-bottom-fade {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 240px;
+  z-index: 2;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(214, 168, 95, 0.22), transparent 34%),
+    linear-gradient(180deg, transparent 0%, rgba(4, 9, 19, 0.98) 100%);
+}
 
 .scroll-indicator {
   position: relative;
@@ -468,11 +514,11 @@
 .ring-one {
   width: 76%;
   height: 76%;
-  border: 1px solid rgba(110,216,255,0.18);
+  border: 1px solid rgba(110,216,255,0.22);
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.015) inset,
-    0 0 60px rgba(77,124,255,0.12);
-  animation: spinSlow 24s linear infinite;
+    0 0 0 1px rgba(255,255,255,0.02) inset,
+    0 0 72px rgba(77,124,255,0.16);
+  animation: spinSlow 20s linear infinite;
 }
 
 .ring-one::after {
@@ -498,11 +544,11 @@
 .ring-two {
   width: 98%;
   height: 98%;
-  border: 1px solid rgba(214,168,95,0.18);
+  border: 1px solid rgba(214,168,95,0.22);
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.01) inset,
-    0 0 72px rgba(214,168,95,0.1);
-  animation: spinReverse 30s linear infinite;
+    0 0 0 1px rgba(255,255,255,0.015) inset,
+    0 0 84px rgba(214,168,95,0.14);
+  animation: spinReverse 26s linear infinite;
 }
 
 .ring-two::after {
@@ -528,11 +574,11 @@
 .ring-three {
   width: 118%;
   height: 118%;
-  border: 1px solid rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,0.11);
   box-shadow:
-    0 0 0 1px rgba(110,216,255,0.03) inset,
-    0 0 80px rgba(110,216,255,0.06);
-  animation: spinSlow 38s linear infinite;
+    0 0 0 1px rgba(110,216,255,0.04) inset,
+    0 0 96px rgba(110,216,255,0.08);
+  animation: spinSlow 34s linear infinite;
 }
 
 .ring-three::after {
@@ -558,14 +604,14 @@
 .ring-one::before,
 .ring-two::before,
 .ring-three::before {
-  content:"";
-  position:absolute;
-  width:16px;
-  height:16px;
-  border-radius:50%;
-  left:50%;
-  top:50%;
-  transform:translate(-50%, -50%);
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .ring-one::before {
@@ -608,24 +654,24 @@
 }
 
 .orbital-core::before {
-  content:"";
-  position:absolute;
-  inset:0;
+  content: "";
+  position: absolute;
+  inset: 0;
   background:
     radial-gradient(circle at 30% 20%, rgba(110,216,255,0.12), transparent 28%),
     radial-gradient(circle at 72% 82%, rgba(214,168,95,0.1), transparent 24%);
 }
 
 .orbital-core::after {
-  content:"";
-  position:absolute;
-  top:10px;
-  left:12px;
-  width:42%;
-  height:18px;
-  border-radius:999px;
-  background:linear-gradient(90deg, rgba(255,255,255,0.26), rgba(255,255,255,0));
-  filter:blur(2px);
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  width: 42%;
+  height: 18px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.26), rgba(255,255,255,0));
+  filter: blur(2px);
 }
 
 .orbital-core img {
@@ -1095,13 +1141,31 @@
 
 @keyframes heroImageFloat {
   0% {
-    transform: scale(1) translateY(0);
+    transform: scale(1.03) translateY(0);
   }
   50% {
-    transform: scale(1.02) translateY(-10px);
+    transform: scale(1.06) translateY(-12px);
   }
   100% {
-    transform: scale(1) translateY(0);
+    transform: scale(1.03) translateY(0);
+  }
+}
+
+@keyframes heroShine {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  58% {
+    transform: translateX(120%);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(120%);
+    opacity: 0;
   }
 }
 

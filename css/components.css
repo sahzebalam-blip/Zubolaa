@@ -461,3 +461,18 @@
     transform: translateY(0) scale(1);
   }
 }
+.brand-mark img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.brand-mark:hover img {
+  transform: translateY(-1px) scale(1.02);
+  filter: drop-shadow(0 0 10px rgba(57,216,255,0.14));
+}
+
+.site-header {
+  transition:
+    background 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+}

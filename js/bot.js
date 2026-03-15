@@ -2,22 +2,34 @@ document.addEventListener("DOMContentLoaded", () => {
   const botWindow = document.querySelector(".bot-window");
   const botBody = document.querySelector(".bot-body");
   const botActionsContainer = document.querySelector(".bot-actions");
-  const botPrimaryCta = document.querySelector('a[href="contact.html"].btn.btn-primary');
+  const botSection = document.querySelector("#zubot-section");
+  const onboardingButtons = document.querySelectorAll(
+    'a[href="#zubot-section"].btn.btn-secondary, a[href="contact.html"].btn.btn-primary'
+  );
 
-  if (!botWindow || !botBody || !window.ZUBOT_DATA) return;
+  if (!botWindow || !botBody || !botActionsContainer || !window.ZUBOT_DATA) return;
 
   const data = window.ZUBOT_DATA;
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const state = {
     onboardingActive: false,
     currentStepIndex: 0,
     answers: {},
+    inlineInputEl: null,
   };
 
   function sanitizeText(value) {
     const div = document.createElement("div");
     div.textContent = value;
     return div.innerHTML;
+  }
+
+  function scrollBotToBottom() {
+    botWindow.scrollTo({
+      top: botWindow.scrollHeight,
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+    });
   }
 
   function createMessage(text, type = "bot") {
@@ -29,23 +41,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function appendMessage(text, type = "bot") {
     const message = createMessage(text, type);
-    botBody.insertBefore(message, botActionsContainer || null);
+    botBody.insertBefore(message, botActionsContainer);
     scrollBotToBottom();
+    return message;
   }
 
   function clearActions() {
-    if (botActionsContainer) {
-      botActionsContainer.innerHTML = "";
-    }
+    botActionsContainer.innerHTML = "";
   }
 
-  function scrollBotToBottom() {
-    botWindow.scrollTo({
-      top: botWindow.scrollHeight,
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "auto"
-        : "smooth",
-    });
+  function removeInlineInput() {
+    if (state.inlineInputEl && state.inlineInputEl.parentNode) {
+      state.inlineInputEl.parentNode.removeChild(state.inlineInputEl);
+    }
+    state.inlineInputEl = null;
+  }
+
+  function resetOnboardingState() {
+    state.onboardingActive = false;
+    state.currentStepIndex = 0;
+    state.answers = {};
+    removeInlineInput();
+    clearActions();
   }
 
   function createActionButton(label, onClick) {
@@ -56,12 +73,22 @@ document.addEventListener("DOMContentLoaded", () => {
     return button;
   }
 
-  function renderQuickActions() {
-    if (!botActionsContainer) return;
+  function goToSection(link) {
+    window.location.href = link;
+  }
 
+  function getGeneralReply(actionLabel) {
+    if (data.generalReplies && data.generalReplies[actionLabel]) {
+      return data.generalReplies[actionLabel];
+    }
+
+    return "I can guide you through the main Zubolaa sections, onboarding flow, academy path and participation direction.";
+  }
+
+  function renderQuickActions() {
     clearActions();
 
-    data.quickActions.forEach((actionLabel) => {
+    (data.quickActions || []).forEach((actionLabel) => {
       const button = createActionButton(actionLabel, () => {
         appendMessage(actionLabel, "user");
 
@@ -70,18 +97,41 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
-        const reply =
-          data.generalReplies[actionLabel] ||
-          "I can currently guide you through the main sections of Zubolaa and help you find the right next step.";
-
+        const reply = getGeneralReply(actionLabel);
         appendMessage(reply, "bot");
+
+        if (actionLabel === "Explore Zubolaa") {
+          appendMessage(
+            "You can begin with About Zubolaa, move through Academy for clarity, then explore Participation or Digi Hub depending on your next step.",
+            "bot"
+          );
+        }
+
+        if (actionLabel === "Visit Academy") {
+          appendMessage(
+            "Academy is the best place to start if you want understanding before action. It helps reduce confusion before deeper movement across the ecosystem.",
+            "bot"
+          );
+        }
+
+        if (actionLabel === "KYC Information") {
+          appendMessage(
+            "KYC-related flows can be introduced in later phases with structured verification pathways, depending on the platform stage and access requirements.",
+            "bot"
+          );
+        }
       });
 
       botActionsContainer.appendChild(button);
     });
+
+    scrollBotToBottom();
   }
 
   function createInlineInput(step) {
+    removeInlineInput();
+    clearActions();
+
     const wrapper = document.createElement("div");
     wrapper.className = "bot-inline-input";
 
@@ -100,7 +150,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       appendMessage(value, "user");
       state.answers[step.key] = value;
-      wrapper.remove();
+
+      removeInlineInput();
       state.currentStepIndex += 1;
       continueOnboarding();
     };
@@ -116,15 +167,18 @@ document.addEventListener("DOMContentLoaded", () => {
     wrapper.appendChild(input);
     wrapper.appendChild(submit);
 
-    botBody.insertBefore(wrapper, botActionsContainer || null);
+    botBody.insertBefore(wrapper, botActionsContainer);
+    state.inlineInputEl = wrapper;
+
     input.focus();
     scrollBotToBottom();
   }
 
   function renderChoiceOptions(step) {
+    removeInlineInput();
     clearActions();
 
-    step.options.forEach((option) => {
+    (step.options || []).forEach((option) => {
       const button = createActionButton(option, () => {
         appendMessage(option, "user");
         state.answers[step.key] = option;
@@ -138,45 +192,66 @@ document.addEventListener("DOMContentLoaded", () => {
     scrollBotToBottom();
   }
 
-  function showRecommendation() {
+  function getRecommendation() {
     const interest = state.answers.interest;
-    const recommendation =
-      data.recommendations[interest] || data.recommendations["General Exploration"];
+    const fallback = {
+      label: "Explore About Zubolaa",
+      link: "about.html",
+      text: "A strong first step is to understand the platform vision, structure and how the ecosystem is being shaped."
+    };
 
-    appendMessage(data.onboarding.kycLine, "bot");
+    if (!data.recommendations) return fallback;
+    return data.recommendations[interest] || data.recommendations["General Exploration"] || fallback;
+  }
+
+  function showRecommendation() {
+    const recommendation = getRecommendation();
+
+    if (data.onboarding?.kycLine) {
+      appendMessage(data.onboarding.kycLine, "bot");
+    }
+
     appendMessage(recommendation.text, "bot");
-    appendMessage(data.onboarding.closing, "bot");
+
+    appendMessage(
+      data.onboarding?.closing ||
+        "You can now move toward the most relevant section or restart the guided flow anytime.",
+      "bot"
+    );
 
     clearActions();
 
     const pageButton = createActionButton(recommendation.label, () => {
-      window.location.href = recommendation.link;
+      goToSection(recommendation.link);
     });
 
-    const contactButton = createActionButton("Go to Contact", () => {
-      window.location.href = "contact.html";
+    const aboutButton = createActionButton("Explore About", () => {
+      goToSection("about.html");
+    });
+
+    const academyButton = createActionButton("Open Academy", () => {
+      goToSection("academy.html");
     });
 
     const restartButton = createActionButton("Restart Onboarding", () => {
-      resetOnboarding();
-      appendMessage("Welcome back. We can begin the guided onboarding path again.", "bot");
-      startOnboarding();
+      appendMessage("Restart Onboarding", "user");
+      startOnboarding(true);
     });
 
     botActionsContainer.appendChild(pageButton);
-    botActionsContainer.appendChild(contactButton);
+    botActionsContainer.appendChild(aboutButton);
+    botActionsContainer.appendChild(academyButton);
     botActionsContainer.appendChild(restartButton);
 
-    if (botPrimaryCta) {
-      botPrimaryCta.textContent = "Continue with Guided Access";
-    }
+    state.onboardingActive = false;
+    scrollBotToBottom();
   }
 
   function continueOnboarding() {
-    const step = data.onboarding.steps[state.currentStepIndex];
+    const steps = data.onboarding?.steps || [];
+    const step = steps[state.currentStepIndex];
 
     if (!step) {
-      state.onboardingActive = false;
       showRecommendation();
       return;
     }
@@ -184,55 +259,72 @@ document.addEventListener("DOMContentLoaded", () => {
     appendMessage(step.question, "bot");
 
     if (step.type === "text") {
-      clearActions();
       createInlineInput(step);
       return;
     }
 
     if (step.type === "choice") {
       renderChoiceOptions(step);
+      return;
     }
+
+    state.currentStepIndex += 1;
+    continueOnboarding();
   }
 
-  function startOnboarding() {
+  function startOnboarding(isRestart = false) {
+    resetOnboardingState();
+
     state.onboardingActive = true;
     state.currentStepIndex = 0;
     state.answers = {};
 
-    clearActions();
-    appendMessage("Welcome. Would you like to begin a guided onboarding path?", "bot");
+    if (isRestart) {
+      appendMessage("Welcome back. We can begin the guided onboarding path again.", "bot");
+    } else {
+      appendMessage("Welcome. Would you like to begin a guided onboarding path?", "bot");
+    }
+
     continueOnboarding();
   }
 
-  function resetOnboarding() {
-    state.onboardingActive = false;
-    state.currentStepIndex = 0;
-    state.answers = {};
-    clearActions();
-  }
-
-  function initBotUiEnhancements() {
+  function initWelcomeMessage() {
     const firstStaticMessage = botBody.querySelector(".bot-message");
-    if (firstStaticMessage && firstStaticMessage.textContent.trim() !== data.welcomeMessage) {
-      firstStaticMessage.textContent = data.welcomeMessage;
-    }
+    if (!firstStaticMessage) return;
 
-    if (botPrimaryCta) {
-      botPrimaryCta.addEventListener("click", (event) => {
-        event.preventDefault();
-        appendMessage("Start Guided Onboarding", "user");
-        startOnboarding();
+    const welcomeText =
+      data.welcomeMessage ||
+      "Welcome to Zubolaa. I can help you explore the ecosystem, understand onboarding and guide you to the right section.";
 
-        document.querySelector("#zubot-section")?.scrollIntoView({
-          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-            ? "auto"
-            : "smooth",
-          block: "start",
-        });
-      });
-    }
+    firstStaticMessage.textContent = welcomeText;
   }
 
-  initBotUiEnhancements();
-  renderQuickActions();
+  function initPrimaryButtons() {
+    onboardingButtons.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        const href = button.getAttribute("href");
+
+        if (href === "#zubot-section" || href === "contact.html") {
+          event.preventDefault();
+          appendMessage("Start Guided Onboarding", "user");
+          startOnboarding();
+
+          if (botSection) {
+            botSection.scrollIntoView({
+              behavior: prefersReducedMotion ? "auto" : "smooth",
+              block: "start",
+            });
+          }
+        }
+      });
+    });
+  }
+
+  function initBot() {
+    initWelcomeMessage();
+    initPrimaryButtons();
+    renderQuickActions();
+  }
+
+  initBot();
 });

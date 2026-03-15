@@ -4,39 +4,94 @@
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes floatSoftAlt {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(6px);
   }
 }
 
 @keyframes pulseGlow {
   0%,
   100% {
-    opacity: 0.75;
+    opacity: 0.7;
     transform: scale(1);
   }
   50% {
-    opacity: 1;
-    transform: scale(1.04);
+    opacity: 0.96;
+    transform: scale(1.035);
+  }
+}
+
+@keyframes pulseCore {
+  0%,
+  100% {
+    box-shadow:
+      0 18px 44px rgba(0,0,0,0.34),
+      0 0 60px rgba(110,216,255,0.08);
+  }
+  50% {
+    box-shadow:
+      0 20px 48px rgba(0,0,0,0.38),
+      0 0 70px rgba(110,216,255,0.12),
+      0 0 22px rgba(214,168,95,0.08);
   }
 }
 
 @keyframes slowRotate {
   from {
-    transform: rotate(0deg);
+    transform: scale(0.78) rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: scale(0.78) rotate(360deg);
   }
 }
 
-@keyframes scrollNudge {
+@keyframes slowRotateReverse {
+  from {
+    transform: scale(0.98) rotate(0deg);
+  }
+  to {
+    transform: scale(0.98) rotate(-360deg);
+  }
+}
+
+@keyframes slowRotateOuter {
+  from {
+    transform: scale(1.14) rotate(0deg);
+  }
+  to {
+    transform: scale(1.14) rotate(360deg);
+  }
+}
+
+@keyframes scrollLine {
   0%,
   100% {
-    transform: translateY(0) rotate(45deg);
-    opacity: 0.75;
+    opacity: 0.55;
+    transform: scaleY(1);
   }
   50% {
-    transform: translateY(5px) rotate(45deg);
+    opacity: 1;
+    transform: scaleY(1.14);
+  }
+}
+
+@keyframes scrollTextFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+    opacity: 0.84;
+  }
+  50% {
+    transform: translateY(3px);
     opacity: 1;
   }
 }
@@ -52,45 +107,116 @@
   }
 }
 
-.opening-logo {
-  animation: floatSoft 6s ease-in-out infinite;
+@keyframes glowSweep {
+  0% {
+    opacity: 0;
+    transform: translateX(-30%) scaleX(0.96);
+  }
+  30% {
+    opacity: 0.55;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(30%) scaleX(1.04);
+  }
 }
 
-.scroll-indicator::after {
-  animation: scrollNudge 1.8s ease-in-out infinite;
+@keyframes botPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(214,168,95,0.08),
+      0 0 0 0 rgba(110,216,255,0.06);
+  }
+  50% {
+    box-shadow:
+      0 0 0 10px rgba(214,168,95,0.02),
+      0 0 0 18px rgba(110,216,255,0.02);
+  }
 }
 
-.ambient-blue,
+/* Ambient */
+.ambient-blue {
+  animation: pulseGlow 11s ease-in-out infinite;
+}
+
 .ambient-gold {
-  animation: pulseGlow 10s ease-in-out infinite;
+  animation: pulseGlow 13s ease-in-out infinite;
 }
 
+/* Opening */
+.scroll-indicator-line {
+  transform-origin: center bottom;
+  animation: scrollLine 1.9s ease-in-out infinite;
+}
+
+.scroll-indicator-text {
+  animation: scrollTextFloat 1.9s ease-in-out infinite;
+}
+
+/* Hero orbital system */
 .ring-one {
-  animation: slowRotate 30s linear infinite;
+  animation: slowRotate 28s linear infinite;
 }
 
 .ring-two {
-  animation: slowRotate 45s linear reverse infinite;
+  animation: slowRotateReverse 42s linear infinite;
 }
 
-.gateway-card,
-.visual-card,
-.bot-window,
-.future-strip-inner {
+.ring-three {
+  animation: slowRotateOuter 58s linear infinite;
+}
+
+.orbital-core {
+  animation: pulseCore 7s ease-in-out infinite;
+}
+
+.orbital-badge-top,
+.orbital-badge-bottom {
+  animation: floatSoft 7s ease-in-out infinite;
+}
+
+.orbital-badge-left,
+.orbital-badge-right {
+  animation: floatSoftAlt 8s ease-in-out infinite;
+}
+
+/* Cards / spotlight / bot */
+.visual-glow {
+  animation: pulseGlow 8s ease-in-out infinite;
+}
+
+.bot-dot {
+  animation: botPulse 3.2s ease-in-out infinite;
+}
+
+/* Optional utility reveal class */
+.fade-up-soft {
   animation: fadeUpSoft 0.8s ease both;
 }
 
+/* Optional shine utility */
+.glow-sweep {
+  animation: glowSweep 2.8s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .opening-logo,
-  .scroll-indicator::after,
   .ambient-blue,
   .ambient-gold,
+  .scroll-indicator-line,
+  .scroll-indicator-text,
   .ring-one,
   .ring-two,
-  .gateway-card,
-  .visual-card,
-  .bot-window,
-  .future-strip-inner {
+  .ring-three,
+  .orbital-core,
+  .orbital-badge-top,
+  .orbital-badge-bottom,
+  .orbital-badge-left,
+  .orbital-badge-right,
+  .visual-glow,
+  .bot-dot,
+  .fade-up-soft,
+  .glow-sweep {
     animation: none !important;
   }
 }

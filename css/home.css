@@ -1174,11 +1174,11 @@
     transform: translateY(0);
     opacity: 0.9;
   }
-  50% {
+  25% {
     transform: translateY(8px);
     opacity: 1;
   }
-  100% {
+  50% {
     transform: translateY(0);
     opacity: 0.7;
   }

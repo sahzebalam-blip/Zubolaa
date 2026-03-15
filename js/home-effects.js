@@ -4,12 +4,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const heroSection = document.querySelector(".hero-section");
   const cinematicOpening = document.querySelector(".cinematic-opening");
   const orbitalCard = document.querySelector(".hero-orbital-card");
-  const openingLogo = document.querySelector(".opening-logo");
   const ambientBlue = document.querySelector(".ambient-blue");
   const ambientGold = document.querySelector(".ambient-gold");
   const gatewayCards = document.querySelectorAll(".gateway-card");
 
-  // Soft parallax / movement
+  let scrollOffsetY = 0;
+  let heroRotateX = 0;
+  let heroRotateY = 0;
+
+  const applyOrbitalTransform = () => {
+    if (!orbitalCard) return;
+
+    orbitalCard.style.transform = `
+      perspective(1100px)
+      translateY(${scrollOffsetY}px)
+      rotateX(${heroRotateX}deg)
+      rotateY(${heroRotateY}deg)
+    `;
+  };
+
+  // Soft parallax / ambient movement
   if (!prefersReducedMotion) {
     window.addEventListener(
       "scroll",
@@ -23,51 +37,44 @@ document.addEventListener("DOMContentLoaded", () => {
           );
         }
 
-        if (orbitalCard) {
-          orbitalCard.style.transform = `translateY(${Math.min(scrollY * 0.04, 18)}px)`;
-        }
-
-        if (openingLogo) {
-          openingLogo.style.transform = `translateY(${Math.min(scrollY * 0.03, 12)}px)`;
-        }
+        scrollOffsetY = Math.min(scrollY * 0.04, 18);
+        applyOrbitalTransform();
 
         if (ambientBlue) {
-          ambientBlue.style.transform = `translate3d(${Math.min(scrollY * 0.015, 12)}px, ${Math.min(
-            scrollY * 0.03,
-            30
-          )}px, 0)`;
+          ambientBlue.style.transform = `translate3d(${Math.min(
+            scrollY * 0.015,
+            12
+          )}px, ${Math.min(scrollY * 0.03, 30)}px, 0)`;
         }
 
         if (ambientGold) {
-          ambientGold.style.transform = `translate3d(${Math.max(-scrollY * 0.01, -10)}px, ${Math.min(
-            scrollY * 0.02,
-            24
-          )}px, 0)`;
+          ambientGold.style.transform = `translate3d(${Math.max(
+            -scrollY * 0.01,
+            -10
+          )}px, ${Math.min(scrollY * 0.02, 24)}px, 0)`;
         }
       },
       { passive: true }
     );
   }
 
-  // Mouse-based tilt for hero visual
+  // Mouse-based hero tilt
   if (heroSection && orbitalCard && !prefersReducedMotion) {
     heroSection.addEventListener("mousemove", (event) => {
       const rect = heroSection.getBoundingClientRect();
       const x = (event.clientX - rect.left) / rect.width;
       const y = (event.clientY - rect.top) / rect.height;
 
-      const rotateY = (x - 0.5) * 10;
-      const rotateX = (0.5 - y) * 10;
+      heroRotateY = (x - 0.5) * 8;
+      heroRotateX = (0.5 - y) * 8;
 
-      orbitalCard.style.transform = `
-        perspective(1000px)
-        rotateX(${rotateX}deg)
-        rotateY(${rotateY}deg)
-      `;
+      applyOrbitalTransform();
     });
 
     heroSection.addEventListener("mouseleave", () => {
-      orbitalCard.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg)";
+      heroRotateX = 0;
+      heroRotateY = 0;
+      applyOrbitalTransform();
     });
   }
 
@@ -79,9 +86,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const x = (event.clientX - rect.left) / rect.width;
         const y = (event.clientY - rect.top) / rect.height;
 
-        const rotateY = (x - 0.5) * 8;
-        const rotateX = (0.5 - y) * 8;
+        const rotateY = (x - 0.5) * 6;
+        const rotateX = (0.5 - y) * 6;
 
+        card.classList.add("is-hovered");
         card.style.transform = `
           perspective(1000px)
           rotateX(${rotateX}deg)
@@ -91,6 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       card.addEventListener("mouseleave", () => {
+        card.classList.remove("is-hovered");
         card.style.transform = "";
       });
     });

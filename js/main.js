@@ -1,16 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;
+  const header = document.querySelector(".site-header");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   body.classList.add("is-loaded");
 
-  // External links safety (future-safe)
+  // External links safety
   document.querySelectorAll('a[target="_blank"]').forEach((link) => {
-    if (!link.rel.includes("noopener")) {
-      link.rel = `${link.rel} noopener noreferrer`.trim();
-    }
+    const currentRel = link.getAttribute("rel") || "";
+    const relParts = currentRel.split(" ").filter(Boolean);
+
+    if (!relParts.includes("noopener")) relParts.push("noopener");
+    if (!relParts.includes("noreferrer")) relParts.push("noreferrer");
+
+    link.setAttribute("rel", relParts.join(" "));
   });
 
-  // Smooth anchor scroll fallback
+  // Smooth anchor scroll with sticky header offset
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", (event) => {
       const targetId = anchor.getAttribute("href");
@@ -21,12 +27,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
       event.preventDefault();
 
-      target.scrollIntoView({
-        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-          ? "auto"
-          : "smooth",
-        block: "start",
+      const headerHeight = header ? header.offsetHeight : 0;
+      const extraOffset = 12;
+      const targetTop =
+        target.getBoundingClientRect().top + window.pageYOffset - headerHeight - extraOffset;
+
+      window.scrollTo({
+        top: targetTop,
+        behavior: prefersReducedMotion ? "auto" : "smooth",
       });
     });
   });
+
+  // Optional helper: opening scroll indicator click polish
+  const openingScroll = document.querySelector(".scroll-indicator-opening");
+  if (openingScroll) {
+    openingScroll.addEventListener("mouseenter", () => {
+      openingScroll.classList.add("is-hovered");
+    });
+
+    openingScroll.addEventListener("mouseleave", () => {
+      openingScroll.classList.remove("is-hovered");
+    });
+  }
 });

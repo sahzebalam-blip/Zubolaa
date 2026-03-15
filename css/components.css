@@ -348,3 +348,116 @@
     transform: translateY(-3.5px) rotate(-45deg);
   }
 }
+.site-header.is-scrolled {
+  background: rgba(4, 10, 18, 0.82);
+  border-bottom-color: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.24);
+}
+
+.main-nav a.is-current {
+  color: var(--text);
+}
+
+.menu-toggle {
+  transition:
+    background 0.28s ease,
+    border-color 0.28s ease,
+    transform 0.28s ease;
+}
+
+.menu-toggle:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(243,199,107,0.18);
+}
+
+.menu-toggle span {
+  transition: transform 0.28s ease, opacity 0.28s ease;
+}
+
+@media (max-width: 860px) {
+  .main-nav {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 4%;
+    right: 4%;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 18px;
+    border-radius: 22px;
+    background:
+      linear-gradient(180deg, rgba(8, 18, 34, 0.98), rgba(5, 12, 24, 0.98));
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow:
+      0 22px 44px rgba(0,0,0,0.36),
+      0 0 30px rgba(57,216,255,0.05);
+    backdrop-filter: blur(20px);
+    overflow: hidden;
+  }
+
+  .main-nav::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at top right, rgba(57,216,255,0.08), transparent 30%),
+      radial-gradient(circle at bottom left, rgba(243,199,107,0.08), transparent 28%);
+    pointer-events: none;
+  }
+
+  .main-nav.is-open {
+    display: flex;
+    animation: navFadeDown 0.34s ease;
+  }
+
+  .main-nav a {
+    position: relative;
+    z-index: 1;
+    padding: 14px 10px;
+    border-radius: 14px;
+    color: #dce8ff;
+    font-size: 0.98rem;
+  }
+
+  .main-nav a:hover,
+  .main-nav a.is-current {
+    background: rgba(255,255,255,0.04);
+    color: var(--text);
+  }
+
+  .nav-cta {
+    margin-top: 6px;
+    justify-content: center;
+    text-align: center;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  .menu-toggle.is-active {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(243,199,107,0.18);
+  }
+
+  .menu-toggle.is-active span:nth-child(1) {
+    transform: translateY(3.5px) rotate(45deg);
+  }
+
+  .menu-toggle.is-active span:nth-child(2) {
+    transform: translateY(-3.5px) rotate(-45deg);
+  }
+}
+
+@keyframes navFadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

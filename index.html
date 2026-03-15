@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zubolaa | Premium Digital Ecosystem by Al Fattah Endless Horizons</title>
+
   <meta
     name="description"
     content="Explore Zubolaa, a premium digital ecosystem designed for guided onboarding, intelligent pathways, digital learning and future-ready platform expansion under Al Fattah Endless Horizons."
@@ -36,7 +37,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
     rel="stylesheet"
   />
 
@@ -71,7 +72,7 @@
         <a href="login.html" class="nav-cta">Login</a>
       </nav>
 
-      <button class="menu-toggle" aria-label="Open Menu">
+      <button class="menu-toggle" aria-label="Open Menu" aria-expanded="false" aria-controls="mobile-navigation">
         <span></span>
         <span></span>
       </button>
@@ -79,43 +80,22 @@
   </header>
 
   <main>
-    <!-- Cinematic Opening -->
-    <section class="cinematic-opening">
+    <!-- Cinematic Opening : Digital City Only -->
+    <section class="cinematic-opening city-opening" aria-label="Digital city opening scene">
       <div class="cinematic-media">
-        <!-- Option 1: video -->
-        <video
-          autoplay
-          muted
-          loop
-          playsinline
-          poster="assets/images/hero/hero-poster.webp"
-          class="hero-video"
-        >
-          <source src="assets/video/cinematic-intro.mp4" type="video/mp4" />
-        </video>
-
-        <!-- Option 2 fallback image -->
-        <!-- <img src="assets/images/hero/hero-poster.webp" alt="Zubolaa cinematic background" class="hero-image" /> -->
+        <img
+          src="assets/images/hero/digital-city-opening.webp"
+          alt="Futuristic digital city ecosystem background"
+          class="hero-image"
+        />
       </div>
 
       <div class="cinematic-overlay"></div>
 
-      <div class="container cinematic-content">
-        <div class="opening-logo-wrap">
-          <img src="assets/logos/zubolaa-mark.svg" alt="Zubolaa emblem" class="opening-logo" />
-        </div>
-
-        <div class="opening-copy">
-          <p class="opening-line">Enter the Zubolaa Ecosystem</p>
-          <p class="opening-subline">
-            A premium digital experience shaped for guided access, intelligent pathways and future-ready expansion.
-          </p>
-        </div>
-
-        <a href="#hero" class="scroll-indicator" aria-label="Scroll to Explore">
-          <span>Scroll to Explore</span>
-        </a>
-      </div>
+      <a href="#hero" class="scroll-indicator scroll-indicator-opening" aria-label="Scroll to homepage">
+        <span class="scroll-indicator-line"></span>
+        <span class="scroll-indicator-text">Scroll</span>
+      </a>
     </section>
 
     <!-- Hero -->
@@ -127,7 +107,8 @@
           <h1>Where Vision Becomes Platform</h1>
 
           <p class="hero-text">
-            More than a destination, Zubolaa is being shaped as a controlled digital environment — introducing users through clarity, guiding them through structure and preparing them for deeper platform layers ahead.
+            Zubolaa is being shaped as a premium digital ecosystem that connects guided onboarding,
+            structured participation, digital learning and future-ready expansion through one refined platform experience.
           </p>
 
           <ul class="hero-points" aria-label="Key platform strengths">
@@ -147,9 +128,16 @@
           <div class="hero-orbital-card">
             <span class="orbital-ring ring-one"></span>
             <span class="orbital-ring ring-two"></span>
+            <span class="orbital-ring ring-three"></span>
+
             <div class="orbital-core">
               <img src="assets/logos/zubolaa-mark.svg" alt="Zubolaa icon" />
             </div>
+
+            <div class="orbital-badge orbital-badge-top">Platform Core</div>
+            <div class="orbital-badge orbital-badge-left">Knowledge</div>
+            <div class="orbital-badge orbital-badge-right">Participation</div>
+            <div class="orbital-badge orbital-badge-bottom">Utility</div>
           </div>
         </div>
       </div>
@@ -159,7 +147,7 @@
     <section class="anchor-strip">
       <div class="container">
         <p>
-          Built under Al Fattah Endless Horizons, this platform experience is being shaped with structure, clarity and long-horizon intent.
+          Built under Al Fattah Endless Horizons, Zubolaa is being developed with structure, clarity and long-horizon intent.
         </p>
       </div>
     </section>
@@ -171,10 +159,10 @@
           <p class="section-label">Platform Experience</p>
           <h2>One Ecosystem. Multiple Gateways.</h2>
           <p class="section-thesis">
-            Zubolaa is designed as a connected digital environment, where every gateway serves a larger platform journey.
+            Zubolaa is designed as a connected digital environment where every gateway supports a larger platform journey.
           </p>
           <p class="section-support">
-            Every layer of the experience is intended to feel connected — from first discovery to guided progression, from learning pathways to future platform access.
+            From first discovery to guided progression, each layer is intended to feel connected, refined and future-ready.
           </p>
         </div>
 
@@ -182,7 +170,7 @@
           <a href="about.html" class="gateway-card">
             <span class="card-tag">Platform Vision</span>
             <h3>About Zubolaa</h3>
-            <p>The structure, identity and long-horizon vision behind the platform.</p>
+            <p>The structure, identity and long-horizon thinking behind the ecosystem.</p>
           </a>
 
           <a href="academy.html" class="gateway-card">
@@ -200,7 +188,7 @@
           <a href="participation.html" class="gateway-card">
             <span class="card-tag">Participation Pathway</span>
             <h3>Market Participation</h3>
-            <p>A guided pathway built to simplify how users move forward.</p>
+            <p>A guided pathway designed to simplify how users move forward.</p>
           </a>
 
           <a href="digi-hub.html" class="gateway-card">
@@ -225,7 +213,8 @@
           <p class="section-label">Guided Access</p>
           <h2>Zu-Bot AI — Your Guided Entry Point</h2>
           <p class="section-support">
-            Zu-Bot AI is designed to welcome, guide and simplify the first interaction — helping users understand the platform, discover relevant sections and move forward with clarity.
+            Zu-Bot AI is designed to welcome, guide and simplify the first interaction — helping users understand the platform,
+            explore relevant sections and move forward with clarity.
           </p>
 
           <p class="zubot-highlight">
@@ -254,7 +243,7 @@
 
             <div class="bot-body">
               <div class="bot-message">
-                Welcome to Zubolaa. I can help you explore the platform, understand onboarding and guide you to the right section.
+                Welcome to Zubolaa. I can help you explore the ecosystem, understand onboarding and guide you to the right section.
               </div>
 
               <div class="bot-actions">
@@ -276,7 +265,8 @@
           <p class="section-label">Knowledge Layer</p>
           <h2>The Knowledge Layer of Zubolaa</h2>
           <p class="section-support">
-            Zubolaa Academy is not an afterthought. It is part of the ecosystem’s foundation — built to create understanding, reduce friction and support a more informed user journey.
+            Zubolaa Academy is part of the ecosystem’s foundation — built to create understanding,
+            reduce friction and support a more informed user journey.
           </p>
           <p class="spotlight-line">
             It is designed to turn curiosity into understanding, and understanding into confident movement across the ecosystem.
@@ -309,7 +299,8 @@
           <p class="section-label">Participation Pathway</p>
           <h2>Participation Begins with Structure</h2>
           <p class="section-support">
-            The Market Participation layer is designed to remove uncertainty at the entry stage, offering a more guided, polished and future-ready path into the wider platform experience.
+            The Market Participation layer is designed to reduce uncertainty at the entry stage,
+            offering a more guided, polished and future-ready path into the wider platform experience.
           </p>
           <p class="spotlight-line">
             The objective is to create confidence before commitment, and structure before scale.
@@ -327,7 +318,8 @@
           <p class="section-label">Digital Utility</p>
           <h2>Where Tools, Flow and Experience Converge</h2>
           <p class="section-support">
-            Al Fattah Digi Hub extends the ecosystem into practical digital utility — from guided tools and automation pathways to future-ready interfaces designed to support the larger Zubolaa journey.
+            Al Fattah Digi Hub extends the ecosystem into practical digital utility — from guided tools
+            and automation pathways to future-ready interfaces designed to support the larger Zubolaa journey.
           </p>
 
           <ul class="spotlight-points">
@@ -356,7 +348,8 @@
         <p class="section-label">Future Architecture</p>
         <h2>Built for the present phase. Structured for deeper infrastructure ahead.</h2>
         <p>
-          The current experience focuses on platform architecture, cinematic presentation and guided onboarding, while future phases are planned to introduce verification pathways, data systems, API-connected flows and full-stack expansion.
+          The current experience focuses on platform architecture, cinematic presentation and guided onboarding,
+          while future phases are planned to introduce verification pathways, data systems, API-connected flows and deeper full-stack expansion.
         </p>
       </div>
     </section>
@@ -368,7 +361,8 @@
       <div class="footer-brand">
         <img src="assets/logos/zubolaa-logo.svg" alt="Zubolaa logo" />
         <p>
-          Zubolaa is being developed as a premium digital ecosystem under Al Fattah Endless Horizons — designed with discipline, guided progression and future-ready intent.
+          Zubolaa is being developed as a premium digital ecosystem under Al Fattah Endless Horizons —
+          designed with discipline, guided progression and future-ready intent.
         </p>
       </div>
 
@@ -404,12 +398,12 @@
     </div>
   </footer>
 
- <script src="js/main.js"></script>
-<script src="js/navigation.js"></script>
-<script src="js/home-effects.js"></script>
-<script src="js/card-effects.js"></script>
-<script src="js/bot-data.js"></script>
-<script src="js/bot.js"></script>
-<script src="js/scroll-effects.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/home-effects.js"></script>
+  <script src="js/card-effects.js"></script>
+  <script src="js/bot-data.js"></script>
+  <script src="js/bot.js"></script>
+  <script src="js/scroll-effects.js"></script>
 </body>
 </html>

@@ -1,6 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;
   const header = document.querySelector(".site-header");
+  const universe = document.querySelector(".homepage-universe");
+  const sectionAuras = document.querySelectorAll(".section-aura");
+  const cards = document.querySelectorAll(
+    ".gateway-card, .visual-card, .bot-window, .future-strip-inner"
+  );
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   body.classList.add("is-loaded");
@@ -39,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Optional helper: opening scroll indicator click polish
+  // Opening scroll indicator hover polish
   const openingScroll = document.querySelector(".scroll-indicator-opening");
   if (openingScroll) {
     openingScroll.addEventListener("mouseenter", () => {
@@ -50,60 +55,71 @@ document.addEventListener("DOMContentLoaded", () => {
       openingScroll.classList.remove("is-hovered");
     });
   }
-});
-/* =========================================
-   HOMEPAGE LIVE-NESS SYSTEM
-========================================= */
-(function () {
-  const universe = document.querySelector(".homepage-universe");
-  const sectionAuras = document.querySelectorAll(".section-aura");
-  const header = document.querySelector(".site-header");
-  const cards = document.querySelectorAll(".gateway-card, .visual-card, .bot-window, .future-strip-inner");
 
-  if (!universe && !sectionAuras.length && !cards.length) return;
+  /* =========================================
+     HOMEPAGE LIVE-NESS SYSTEM
+  ========================================= */
+  if (universe || sectionAuras.length || cards.length) {
+    let ticking = false;
 
-  function updateUniverseParallax() {
-    const scrollY = window.scrollY;
-    const glowY = scrollY * 0.04;
+    function updateUniverseParallax() {
+      const scrollY = window.scrollY;
+      const glowY = prefersReducedMotion ? 0 : scrollY * 0.04;
 
-    if (universe) {
-      universe.style.transform = `translate3d(0, ${glowY}px, 0)`;
+      if (universe) {
+        universe.style.transform = `translate3d(0, ${glowY}px, 0)`;
+      }
+
+      sectionAuras.forEach((aura, index) => {
+        const offset = prefersReducedMotion
+          ? 0
+          : (scrollY * 0.02) * (index % 2 === 0 ? 1 : -1);
+
+        aura.style.transform = `translate3d(0, ${offset}px, 0)`;
+      });
+
+      if (header) {
+        if (scrollY > 20) {
+          header.classList.add("is-scrolled");
+        } else {
+          header.classList.remove("is-scrolled");
+        }
+      }
+
+      ticking = false;
     }
 
-    sectionAuras.forEach((aura, index) => {
-      const offset = (scrollY * 0.02) * (index % 2 === 0 ? 1 : -1);
-      aura.style.transform = `translate3d(0, ${offset}px, 0)`;
-    });
-
-    if (header) {
-      if (scrollY > 20) {
-        header.classList.add("is-scrolled");
-      } else {
-        header.classList.remove("is-scrolled");
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(updateUniverseParallax);
+        ticking = true;
       }
     }
-  }
 
-  function setupPointerGlow() {
-    cards.forEach((card) => {
-      card.addEventListener("mousemove", (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
+    function setupPointerGlow() {
+      if (prefersReducedMotion) return;
 
-        card.style.setProperty("--pointer-x", `${x}%`);
-        card.style.setProperty("--pointer-y", `${y}%`);
-        card.classList.add("is-pointer-active");
+      cards.forEach((card) => {
+        card.addEventListener("mousemove", (event) => {
+          const rect = card.getBoundingClientRect();
+          const x = ((event.clientX - rect.left) / rect.width) * 100;
+          const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+          card.style.setProperty("--pointer-x", `${x}%`);
+          card.style.setProperty("--pointer-y", `${y}%`);
+          card.classList.add("is-pointer-active");
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.classList.remove("is-pointer-active");
+        });
       });
+    }
 
-      card.addEventListener("mouseleave", () => {
-        card.classList.remove("is-pointer-active");
-      });
-    });
+    updateUniverseParallax();
+    setupPointerGlow();
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", updateUniverseParallax);
   }
-
-  window.addEventListener("scroll", updateUniverseParallax, { passive: true });
-  window.addEventListener("load", updateUniverseParallax);
-
-  setupPointerGlow();
-})();
+});

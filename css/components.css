@@ -8,7 +8,12 @@
   background: linear-gradient(180deg, rgba(4, 10, 18, 0.88), rgba(4, 10, 18, 0.72));
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
-  transition: background 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+  transition:
+    background 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease,
+    backdrop-filter 0.28s ease,
+    -webkit-backdrop-filter 0.28s ease;
 }
 
 .site-header.is-scrolled {
@@ -26,86 +31,13 @@
   position: relative;
   z-index: 1;
 }
-/* =========================================
-   PREMIUM BRAND BADGE
-========================================= */
 
-.brand-mark {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-}
-
-.brand-badge-glow {
-  position: absolute;
-  inset: -10px;
-  border-radius: 999px;
-  background:
-    radial-gradient(circle, rgba(63, 216, 255, 0.22) 0%, rgba(63, 216, 255, 0.06) 45%, transparent 72%);
-  filter: blur(16px);
-  opacity: 0.9;
-  pointer-events: none;
-}
-
-.brand-badge {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 74px;
-  min-height: 74px;
-  padding: 10px 16px;
-  border-radius: 999px;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03)),
-    linear-gradient(135deg, rgba(47,107,255,0.18), rgba(63,216,255,0.12) 48%, rgba(244,195,90,0.12));
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow:
-    0 10px 30px rgba(0,0,0,0.28),
-    inset 0 1px 0 rgba(255,255,255,0.12),
-    inset 0 0 22px rgba(63,216,255,0.06);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-.brand-badge::before {
-  content: "";
-  position: absolute;
-  inset: 1px;
-  border-radius: inherit;
-  border: 1px solid rgba(63, 216, 255, 0.10);
-  pointer-events: none;
-}
-
-.brand-logo {
-  position: relative;
-  z-index: 2;
-  height: 46px;
-  width: auto;
-  display: block;
-  object-fit: contain;
-  filter:
-    drop-shadow(0 0 10px rgba(63, 216, 255, 0.18))
-    drop-shadow(0 0 16px rgba(244, 195, 90, 0.10));
-}
-
-@media (max-width: 768px) {
-  .brand-badge {
-    min-width: 62px;
-    min-height: 62px;
-    padding: 8px 12px;
-  }
-
-  .brand-logo {
-    height: 38px;
-  }
-}
 /* =========================
    BRAND / LOGO
 ========================= */
 
 .brand-mark {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 14px;
@@ -130,7 +62,8 @@
     radial-gradient(circle at 30% 20%, rgba(110, 216, 255, 0.22), transparent 44%),
     radial-gradient(circle at 72% 76%, rgba(214, 168, 95, 0.18), transparent 48%);
   filter: blur(18px);
-  opacity: 0.9;
+  opacity: 0.92;
+  pointer-events: none;
 }
 
 .brand-badge-frame {
@@ -149,7 +82,21 @@
     0 16px 38px rgba(0, 0, 0, 0.26),
     inset 0 1px 0 rgba(255, 255, 255, 0.10),
     0 0 24px rgba(110, 216, 255, 0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.brand-badge-frame::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  border: 1px solid rgba(110, 216, 255, 0.08);
+  pointer-events: none;
 }
 
 .brand-badge-frame::after {
@@ -243,7 +190,11 @@
   font-size: 0.92rem;
   font-weight: 600;
   letter-spacing: 0.01em;
-  transition: color 0.28s ease, transform 0.28s ease, background 0.28s ease, box-shadow 0.28s ease;
+  transition:
+    color 0.28s ease,
+    transform 0.28s ease,
+    background 0.28s ease,
+    box-shadow 0.28s ease;
 }
 
 .main-nav a::after {
@@ -317,7 +268,11 @@
   box-shadow:
     0 12px 24px rgba(0, 0, 0, 0.16),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  transition: background 0.28s ease, border-color 0.28s ease, transform 0.28s ease, box-shadow 0.28s ease;
+  transition:
+    background 0.28s ease,
+    border-color 0.28s ease,
+    transform 0.28s ease,
+    box-shadow 0.28s ease;
 }
 
 .menu-toggle:hover {
@@ -432,6 +387,7 @@
     linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.02)),
     rgba(10, 18, 34, 0.74);
   backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   box-shadow:
     var(--shadow-lg),
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
@@ -692,6 +648,7 @@
       0 22px 44px rgba(0, 0, 0, 0.36),
       0 0 30px rgba(110, 216, 255, 0.05);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     overflow: hidden;
   }
 

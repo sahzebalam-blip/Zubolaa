@@ -11,10 +11,12 @@
   z-index: -1;
   pointer-events: none;
   overflow: hidden;
+  will-change: transform;
+  transition: transform 0.18s linear;
   background:
-    radial-gradient(circle at 18% 22%, rgba(77, 124, 255, 0.10), transparent 18%),
-    radial-gradient(circle at 82% 20%, rgba(214, 168, 95, 0.08), transparent 16%),
-    radial-gradient(circle at 54% 68%, rgba(110, 216, 255, 0.06), transparent 18%),
+    radial-gradient(circle at 18% 22%, rgba(77, 124, 255, 0.12), transparent 18%),
+    radial-gradient(circle at 82% 20%, rgba(214, 168, 95, 0.10), transparent 16%),
+    radial-gradient(circle at 54% 68%, rgba(110, 216, 255, 0.07), transparent 18%),
     linear-gradient(180deg, rgba(3, 8, 16, 0.96) 0%, rgba(4, 9, 19, 1) 100%);
 }
 
@@ -23,9 +25,9 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 24% 30%, rgba(77,124,255,0.12), transparent 22%),
-    radial-gradient(circle at 76% 34%, rgba(214,168,95,0.08), transparent 18%),
-    radial-gradient(circle at 50% 78%, rgba(110,216,255,0.05), transparent 20%);
+    radial-gradient(circle at 24% 30%, rgba(77,124,255,0.14), transparent 22%),
+    radial-gradient(circle at 76% 34%, rgba(214,168,95,0.09), transparent 18%),
+    radial-gradient(circle at 50% 78%, rgba(110,216,255,0.06), transparent 20%);
   filter: blur(28px);
   animation: home-universe-breath 14s ease-in-out infinite;
   pointer-events: none;
@@ -42,8 +44,8 @@
     radial-gradient(circle at 84% 60%, rgba(214,168,95,0.68) 0 1px, transparent 1.6px),
     radial-gradient(circle at 62% 82%, rgba(255,255,255,0.62) 0 1px, transparent 1.6px),
     radial-gradient(circle at 46% 44%, rgba(110,216,255,0.50) 0 1px, transparent 1.6px);
-  opacity: 0.36;
-  animation: home-star-shift 28s linear infinite;
+  opacity: 0.34;
+  animation: home-star-shift 26s linear infinite;
   pointer-events: none;
 }
 
@@ -55,52 +57,54 @@
 
 .universe-nebula {
   border-radius: 50%;
-  filter: blur(70px);
-  opacity: 0.5;
+  filter: blur(82px);
+  opacity: 0.54;
+  mix-blend-mode: screen;
 }
 
 .nebula-one {
-  width: 520px;
-  height: 520px;
-  top: 8%;
-  left: -120px;
-  background: radial-gradient(circle, rgba(77, 124, 255, 0.2), transparent 68%);
-  animation: home-nebula-float 18s ease-in-out infinite;
+  width: 560px;
+  height: 560px;
+  top: 6%;
+  left: -140px;
+  background: radial-gradient(circle, rgba(77, 124, 255, 0.24), transparent 68%);
+  animation: home-nebula-float 22s ease-in-out infinite;
 }
 
 .nebula-two {
-  width: 460px;
-  height: 460px;
-  right: -80px;
+  width: 500px;
+  height: 500px;
+  right: -90px;
   top: 18%;
-  background: radial-gradient(circle, rgba(214, 168, 95, 0.14), transparent 68%);
-  animation: home-nebula-float 22s ease-in-out infinite reverse;
+  background: radial-gradient(circle, rgba(214, 168, 95, 0.16), transparent 68%);
+  animation: home-nebula-float 26s ease-in-out infinite reverse;
 }
 
 .universe-glow {
   border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.34;
+  filter: blur(96px);
+  opacity: 0.36;
+  mix-blend-mode: screen;
 }
 
 .glow-one {
-  width: 680px;
-  height: 680px;
+  width: 720px;
+  height: 720px;
   left: 50%;
-  top: 12%;
+  top: 10%;
   transform: translateX(-50%);
-  background: radial-gradient(circle, rgba(110, 216, 255, 0.14), transparent 66%);
+  background: radial-gradient(circle, rgba(110, 216, 255, 0.16), transparent 66%);
   animation: home-glow-pulse 12s ease-in-out infinite;
 }
 
 .glow-two {
-  width: 540px;
-  height: 540px;
+  width: 580px;
+  height: 580px;
   left: 50%;
-  bottom: 8%;
+  bottom: 6%;
   transform: translateX(-50%);
-  background: radial-gradient(circle, rgba(214, 168, 95, 0.1), transparent 66%);
-  animation: home-glow-pulse 14s ease-in-out infinite reverse;
+  background: radial-gradient(circle, rgba(214, 168, 95, 0.12), transparent 66%);
+  animation: home-glow-pulse 15s ease-in-out infinite reverse;
 }
 
 .universe-grid {
@@ -111,24 +115,55 @@
     linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
   background-size: 62px 62px;
-  opacity: 0.18;
+  opacity: 0.17;
   mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 36%, rgba(0,0,0,0.3) 78%, transparent 100%);
   -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 36%, rgba(0,0,0,0.3) 78%, transparent 100%);
+  animation: home-grid-drift 36s linear infinite;
 }
 
 .universe-stars {
   inset: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.34;
+  opacity: 0.38;
   background-image:
-    radial-gradient(circle at 12% 22%, rgba(255,255,255,0.9) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 24% 68%, rgba(110,216,255,0.8) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 12% 22%, rgba(255,255,255,0.92) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 24% 68%, rgba(110,216,255,0.82) 0 1px, transparent 1.5px),
     radial-gradient(circle at 72% 28%, rgba(255,255,255,0.85) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 84% 62%, rgba(214,168,95,0.72) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 64% 82%, rgba(255,255,255,0.7) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 42% 18%, rgba(110,216,255,0.62) 0 1px, transparent 1.5px);
+    radial-gradient(circle at 84% 62%, rgba(214,168,95,0.74) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 64% 82%, rgba(255,255,255,0.70) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 42% 18%, rgba(110,216,255,0.62) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 28% 40%, rgba(255,255,255,0.65) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 60% 18%, rgba(214,168,95,0.42) 0 1px, transparent 1.5px);
   animation: home-star-drift 30s linear infinite;
+}
+
+.universe-stars::before,
+.universe-stars::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.universe-stars::before {
+  opacity: 0.26;
+  background-image:
+    radial-gradient(circle at 18% 30%, rgba(255,255,255,0.8) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 38% 60%, rgba(110,216,255,0.5) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 70% 36%, rgba(255,255,255,0.72) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 82% 74%, rgba(214,168,95,0.52) 0 1px, transparent 1.6px);
+  animation: home-star-twinkle 5.5s ease-in-out infinite alternate;
+}
+
+.universe-stars::after {
+  opacity: 0.18;
+  background-image:
+    radial-gradient(circle at 14% 72%, rgba(255,255,255,0.68) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 56% 54%, rgba(110,216,255,0.58) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 78% 18%, rgba(255,255,255,0.74) 0 1px, transparent 1.5px);
+  animation: home-star-twinkle 7.2s ease-in-out infinite alternate-reverse;
 }
 
 .universe-orbit {
@@ -136,22 +171,22 @@
   left: 50%;
   top: 20%;
   transform: translateX(-50%);
-  opacity: 0.22;
+  opacity: 0.24;
 }
 
 .orbit-one {
-  width: 900px;
-  height: 900px;
-  border: 1px solid rgba(110,216,255,0.05);
-  box-shadow: 0 0 40px rgba(110,216,255,0.04);
+  width: 940px;
+  height: 940px;
+  border: 1px solid rgba(110,216,255,0.06);
+  box-shadow: 0 0 40px rgba(110,216,255,0.05);
   animation: home-rotate-universe 52s linear infinite;
 }
 
 .orbit-two {
-  width: 1120px;
-  height: 1120px;
-  border: 1px solid rgba(214,168,95,0.04);
-  box-shadow: 0 0 34px rgba(214,168,95,0.03);
+  width: 1140px;
+  height: 1140px;
+  border: 1px solid rgba(214,168,95,0.05);
+  box-shadow: 0 0 34px rgba(214,168,95,0.04);
   animation: home-rotate-universe-reverse 74s linear infinite;
 }
 
@@ -271,20 +306,20 @@
   background:
     linear-gradient(
       180deg,
-      rgba(4, 9, 19, 0.06) 0%,
-      rgba(4, 9, 19, 0.10) 24%,
-      rgba(4, 9, 19, 0.22) 56%,
-      rgba(4, 9, 19, 0.66) 100%
+      rgba(4, 9, 19, 0.05) 0%,
+      rgba(4, 9, 19, 0.09) 24%,
+      rgba(4, 9, 19, 0.20) 56%,
+      rgba(4, 9, 19, 0.64) 100%
     );
 }
 
 .cinematic-overlay-secondary {
   z-index: 2;
   background:
-    radial-gradient(circle at 50% 72%, rgba(214,168,95,0.12), transparent 22%),
-    radial-gradient(circle at 72% 26%, rgba(110,216,255,0.07), transparent 20%);
+    radial-gradient(circle at 50% 72%, rgba(214,168,95,0.14), transparent 22%),
+    radial-gradient(circle at 72% 26%, rgba(110,216,255,0.08), transparent 20%);
   mix-blend-mode: screen;
-  opacity: 0.68;
+  opacity: 0.7;
 }
 
 .opening-bottom-fade {
@@ -294,7 +329,7 @@
   bottom: 0;
   height: 170px;
   z-index: 3;
-  background: linear-gradient(180deg, rgba(4, 9, 19, 0) 0%, rgba(4, 9, 19, 0.96) 100%);
+  background: linear-gradient(180deg, rgba(4, 9, 19, 0) 0%, rgba(4, 9, 19, 0.97) 100%);
 }
 
 /* ---------------------------------
@@ -376,6 +411,8 @@ section {
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
+  will-change: transform;
+  transition: transform 0.22s linear;
 }
 
 .section-aura::before,
@@ -591,6 +628,7 @@ section {
   justify-content: center;
   align-items: center;
   isolation: isolate;
+  animation: home-orbital-float 7s ease-in-out infinite;
 }
 
 .orbital-ring {
@@ -878,8 +916,37 @@ section {
 /* ---------------------------------
    Gateway
 --------------------------------- */
-.gateway-section {
+.gateway-section,
+.zubot-section,
+.spotlight-section,
+.future-strip,
+.anchor-strip,
+.hero-section {
   position: relative;
+}
+
+.gateway-section::after,
+.zubot-section::after,
+.spotlight-section::after,
+.future-strip::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -60px;
+  bottom: -60px;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(63, 216, 255, 0.12) 18%,
+    rgba(244, 195, 90, 0.08) 48%,
+    rgba(63, 216, 255, 0.10) 78%,
+    transparent 100%
+  );
+  box-shadow: 0 0 22px rgba(63, 216, 255, 0.10);
+  pointer-events: none;
+  opacity: 0.7;
 }
 
 .gateway-grid {
@@ -906,7 +973,8 @@ section {
   transition:
     transform 0.34s ease,
     border-color 0.34s ease,
-    box-shadow 0.34s ease;
+    box-shadow 0.34s ease,
+    background 0.34s ease;
 }
 
 .gateway-card::before {
@@ -951,6 +1019,16 @@ section {
     0 24px 44px rgba(0, 0, 0, 0.34),
     0 0 34px rgba(110, 216, 255, 0.08),
     0 0 16px rgba(214, 168, 95, 0.08);
+}
+
+.gateway-card.is-pointer-active,
+.visual-card.is-pointer-active,
+.bot-window.is-pointer-active,
+.future-strip-inner.is-pointer-active {
+  box-shadow:
+    0 26px 50px rgba(0,0,0,0.34),
+    0 0 28px rgba(63, 216, 255, 0.08),
+    0 0 18px rgba(244, 195, 90, 0.06);
 }
 
 .gateway-live-line {
@@ -1104,10 +1182,6 @@ section {
 /* ---------------------------------
    Future Strip
 --------------------------------- */
-.future-strip {
-  position: relative;
-}
-
 .future-strip-inner {
   text-align: center;
   max-width: 920px;
@@ -1121,6 +1195,11 @@ section {
   box-shadow:
     var(--shadow-lg),
     inset 0 1px 0 rgba(255,255,255,0.03);
+  transition:
+    transform 0.34s ease,
+    box-shadow 0.34s ease,
+    border-color 0.34s ease,
+    background 0.34s ease;
 }
 
 /* ---------------------------------
@@ -1202,6 +1281,35 @@ section {
 }
 
 /* ---------------------------------
+   Stronger section-specific aura
+--------------------------------- */
+.gateway-section .section-aura::before,
+.zubot-section .section-aura::before,
+.spotlight-section .section-aura::before,
+.future-strip .section-aura::before {
+  opacity: 0.54;
+}
+
+.gateway-section .section-aura::after,
+.zubot-section .section-aura::after,
+.spotlight-section .section-aura::after,
+.future-strip .section-aura::after {
+  opacity: 0.48;
+}
+
+.zubot-section .section-aura::before {
+  background: radial-gradient(circle, rgba(63, 216, 255, 0.14), transparent 70%);
+}
+
+.participation-spotlight .section-aura::after {
+  background: radial-gradient(circle, rgba(244, 195, 90, 0.11), transparent 70%);
+}
+
+.digi-spotlight .section-aura::before {
+  background: radial-gradient(circle, rgba(47, 107, 255, 0.12), transparent 70%);
+}
+
+/* ---------------------------------
    Reveal
 --------------------------------- */
 .hero-copy,
@@ -1244,7 +1352,6 @@ section {
 
 /* ---------------------------------
    Home-only Animations
-   renamed to avoid overriding animations.css
 --------------------------------- */
 @keyframes home-hero-image-float {
   0% {
@@ -1361,7 +1468,7 @@ section {
     transform: translate3d(0, 0, 0) scale(1);
   }
   50% {
-    transform: translate3d(18px, -20px, 0) scale(1.04);
+    transform: translate3d(22px, -24px, 0) scale(1.06);
   }
   100% {
     transform: translate3d(0, 0, 0) scale(1);
@@ -1389,6 +1496,30 @@ section {
   }
   to {
     transform: translateY(16px);
+  }
+}
+
+@keyframes home-star-twinkle {
+  0% {
+    opacity: 0.14;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.32;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 0.18;
+    transform: scale(1);
+  }
+}
+
+@keyframes home-grid-drift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(10px);
   }
 }
 
@@ -1434,6 +1565,18 @@ section {
   }
 }
 
+@keyframes home-orbital-float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 /* ---------------------------------
    Responsive
 --------------------------------- */
@@ -1476,6 +1619,16 @@ section {
   .hero-orbital-card {
     width: min(100%, 560px);
   }
+
+  .orbit-one {
+    width: 760px;
+    height: 760px;
+  }
+
+  .orbit-two {
+    width: 920px;
+    height: 920px;
+  }
 }
 
 @media (max-width: 860px) {
@@ -1498,6 +1651,15 @@ section {
 
   .orbital-badge-left,
   .orbital-badge-right {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .gateway-section::after,
+  .zubot-section::after,
+  .spotlight-section::after,
+  .future-strip::after {
     display: none;
   }
 }
@@ -1581,6 +1743,21 @@ section {
     width: 30px;
     height: 50px;
   }
+
+  .orbit-one {
+    width: 540px;
+    height: 540px;
+  }
+
+  .orbit-two {
+    width: 680px;
+    height: 680px;
+  }
+
+  .nebula-one,
+  .nebula-two {
+    opacity: 0.42;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1599,131 +1776,10 @@ section {
   .city-opening .hero-image {
     object-position: 72% center;
   }
-}
-/* =========================================
-   PHASE 2 — LIVE-NESS SYSTEM
-========================================= */
 
-.homepage-universe {
-  will-change: transform;
-  transition: transform 0.18s linear;
-}
-
-.section-aura {
-  will-change: transform;
-  transition: transform 0.22s linear;
-}
-
-.gateway-section,
-.zubot-section,
-.spotlight-section,
-.future-strip,
-.anchor-strip,
-.hero-section {
-  position: relative;
-}
-
-.gateway-section::after,
-.zubot-section::after,
-.spotlight-section::after,
-.future-strip::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: -60px;
-  bottom: -60px;
-  width: 1px;
-  transform: translateX(-50%);
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(63, 216, 255, 0.12) 18%,
-    rgba(244, 195, 90, 0.08) 48%,
-    rgba(63, 216, 255, 0.10) 78%,
-    transparent 100%
-  );
-  box-shadow: 0 0 22px rgba(63, 216, 255, 0.10);
-  pointer-events: none;
-  opacity: 0.7;
-}
-
-.site-header {
-  transition:
-    background 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    backdrop-filter 0.3s ease;
-}
-
-.site-header.is-scrolled {
-  background: rgba(7, 17, 31, 0.72);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 16px 34px rgba(0,0,0,0.24);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-
-.gateway-card,
-.visual-card,
-.bot-window,
-.future-strip-inner {
-  transition:
-    transform 0.34s ease,
-    box-shadow 0.34s ease,
-    border-color 0.34s ease,
-    background 0.34s ease;
-}
-
-.gateway-card:hover,
-.visual-card:hover,
-.bot-window:hover,
-.future-strip-inner:hover {
-  transform: translateY(-6px);
-}
-
-.gateway-card.is-pointer-active,
-.visual-card.is-pointer-active,
-.bot-window.is-pointer-active,
-.future-strip-inner.is-pointer-active {
-  box-shadow:
-    0 26px 50px rgba(0,0,0,0.34),
-    0 0 28px rgba(63, 216, 255, 0.08),
-    0 0 18px rgba(244, 195, 90, 0.06);
-}
-
-/* stronger but controlled universe visibility */
-.gateway-section .section-aura::before,
-.zubot-section .section-aura::before,
-.spotlight-section .section-aura::before,
-.future-strip .section-aura::before {
-  opacity: 0.54;
-}
-
-.gateway-section .section-aura::after,
-.zubot-section .section-aura::after,
-.spotlight-section .section-aura::after,
-.future-strip .section-aura::after {
-  opacity: 0.48;
-}
-
-/* subtle section-specific variation */
-.zubot-section .section-aura::before {
-  background: radial-gradient(circle, rgba(63, 216, 255, 0.14), transparent 70%);
-}
-
-.participation-spotlight .section-aura::after {
-  background: radial-gradient(circle, rgba(244, 195, 90, 0.11), transparent 70%);
-}
-
-.digi-spotlight .section-aura::before {
-  background: radial-gradient(circle, rgba(47, 107, 255, 0.12), transparent 70%);
-}
-
-@media (max-width: 768px) {
-  .gateway-section::after,
-  .zubot-section::after,
-  .spotlight-section::after,
-  .future-strip::after {
-    display: none;
+  .homepage-universe::after,
+  .universe-stars::before,
+  .universe-stars::after {
+    opacity: 0.14;
   }
 }
